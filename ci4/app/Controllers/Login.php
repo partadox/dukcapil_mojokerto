@@ -14,7 +14,7 @@ class Login extends BaseController
     {
         if (session('login')) {
             session()->setFlashdata('pesan_gagal', 'Anda sudah login!');
-            return redirect()->to('/auth/dashboard');
+            return redirect()->to('auth/dashboard');
         }
         $data = [
             'title' => 'Login'
