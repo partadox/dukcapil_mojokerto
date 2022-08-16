@@ -44,6 +44,7 @@ use App\Models\Model_Layanan_Kategori;
 use App\Models\Model_Medfo;
 use App\Models\Model_Penghargaan;
 use App\Models\Model_Log;
+use App\Models\Model_Zi;
 
 class BaseController extends Controller
 {
@@ -98,5 +99,6 @@ class BaseController extends Controller
 		$this->medfo 			= new Model_Medfo;
 		$this->penghargaan 		= new Model_Penghargaan;		
 		$this->log 				= new Model_Log;
+		$this->zi 				= new Model_Zi;
 	}
 }

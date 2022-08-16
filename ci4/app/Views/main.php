@@ -154,7 +154,7 @@
                         </li>
                         
                         <li class="nav-item ">
-                            <a href="#" class="nav-link">
+                            <a href="<?= base_url('home/zona_integritas') ?>" class="nav-link">
                                 Zona Integritas
                             </a>
                         </li>

@@ -94,6 +94,7 @@ $routes->get('/auth/medfo/ikm', 'Medfo::ikm', ['filter' => 'Validasilogin']);
 $routes->get('/auth/medfo/penghargaan', 'Medfo::penghargaan', ['filter' => 'Validasilogin']);
 $routes->get('/home/penghargaan/(:any)', 'Home::single_penghargaan/$1');
 
+$routes->get('/auth/zi', 'Zi::index', ['filter' => 'Validasilogin']);
 
 
 /**

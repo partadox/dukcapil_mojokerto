@@ -89,6 +89,18 @@
         <li><a href="<?= base_url('auth/medfo/ikm') ?>">Indeks Kepuasan Masy.</a></li>
     </ul>
 </li>
+<li>
+    <a href="<?= base_url('auth/zi/') ?>" class="waves-effect">
+        <i class="mdi mdi-globe-model"></i> <span> Zona Integritas </span>
+    </a>
+</li>
+<li>
+    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-store-24-hour"></i> <span> Lapak GISA <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span> </a>
+    <ul class="submenu">
+        <li><a href="<?= base_url('auth/gisa/kategori') ?>">Kategori</a></li>
+        <li><a href="<?= base_url('auth/gisa/subkategori') ?>">Sub. Kategori</a></li>
+    </ul>
+</li>
 
 <li class="menu-title">Tampilan Depan</li>
 <li>
@@ -99,6 +111,13 @@
 <li>
     <a href="<?= base_url('auth/informasi/') ?>" class="waves-effect">
         <i class="mdi mdi-card-bulleted"></i> <span> Data Informasi </span>
+    </a>
+</li>
+
+<li class="menu-title">Pengaturan</li>
+<li>
+    <a href="<?= base_url('auth/user/') ?>" class="waves-effect">
+        <i class="mdi mdi-account"></i> <span> User </span>
     </a>
 </li>
 

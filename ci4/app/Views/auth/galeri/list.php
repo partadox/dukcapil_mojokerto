@@ -162,7 +162,16 @@
                                 timer: 1500
                             });
                             listgallery();
-                        }
+                        } else {
+                            Swal.fire({
+                                title: "Gagal!",
+                                text: response.gagal,
+                                icon: "error",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            listgallery();
+                        } 
                     }
                 });
             }

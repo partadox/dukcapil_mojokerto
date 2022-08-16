@@ -43,9 +43,16 @@ class Model_Galeri_Foto extends Model
 
     public function single_galeri($galeri_id)
     {
-        return $this->table('tb_galeri')
+        return $this->table('tb_galeri_foto')
             ->where('foto_galeri_id', $galeri_id)
             ->orderBy('foto_id', 'ASC')
             ->get()->getResultArray();
+    }
+
+    public function cek_foto_galeri_id($galeri_id)
+    {
+        return $this->table('tb_galeri_foto')
+            ->where('foto_galeri_id ', $galeri_id)
+            ->countAllResults();
     }
 }

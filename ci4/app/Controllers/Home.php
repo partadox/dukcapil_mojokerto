@@ -939,4 +939,43 @@ class Home extends BaseController
 		}
 		
     }
+
+	public function zona_integritas()
+    {
+		$nomor_telepon          = $this->informasi->find(1);
+		$email                  = $this->informasi->find(2);
+		$alamat                 = $this->informasi->find(3);
+		$facebook               = $this->informasi->find(4);
+		$twitter                = $this->informasi->find(5);
+		$instagram              = $this->informasi->find(6);
+		$youtube                = $this->informasi->find(7);
+		$jam_senin_kamis        = $this->informasi->find(8);
+		$jam_jumat              = $this->informasi->find(9);
+		$jam_sabtu_minggu       = $this->informasi->find(10);
+		$wa_akta                = $this->informasi->find(11);
+		$wa_ktp                 = $this->informasi->find(12);
+		$wa_pengaduan           = $this->informasi->find(13);
+
+		$zi_deskripsi 			= $this->profil->find(12);
+
+		$data = [
+			'layanan_kategori' 		=> $this->layanan_kategori->list(),
+			'nomor_telepon'         => $nomor_telepon['informasi_value'],
+			'email'                 => $email['informasi_value'],
+			'alamat'                => $alamat['informasi_value'],
+			'facebook'              => $facebook['informasi_value'],
+			'twitter'               => $twitter['informasi_value'],
+			'instagram'             => $instagram['informasi_value'],
+			'youtube'               => $youtube['informasi_value'],
+			'jam_senin_kamis'       => $jam_senin_kamis['informasi_value'],
+			'jam_jumat'             => $jam_jumat['informasi_value'],
+			'jam_sabtu_minggu'      => $jam_sabtu_minggu['informasi_value'],
+			'wa_akta'               => $wa_akta['informasi_value'],
+			'wa_ktp'                => $wa_ktp['informasi_value'],
+			'wa_pengaduan'          => $wa_pengaduan['informasi_value'],
+			'zi_deskripsi'			=> $zi_deskripsi['profil_value'],
+			'zi_file'				=> $this->zi->list(),
+		];
+        return view('halaman/zona_integritas', $data);
+    }
 }

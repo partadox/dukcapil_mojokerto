@@ -187,46 +187,57 @@ class Galeri extends BaseController
     {
         if ($this->request->isAJAX()) {
 
-            $galeri_id = $this->request->getVar('galeri_id');
-            //check
-            $cekdata = $this->galeri->find($galeri_id);
-            $fotolama = $cekdata['galeri_sampul'];
-            if ($fotolama != 'default.png') {
-                unlink('img/sampul/' . $fotolama);
-                unlink('img/sampul/thumb/' . 'thumb_' . $fotolama);
+            $galeri_id          = $this->request->getVar('galeri_id');
+            $cek_galeri_id_foto = $this->galeri_foto->cek_foto_galeri_id($galeri_id);
+
+            if ($cek_galeri_id_foto == 0) {
+                //check
+                $cekdata = $this->galeri->find($galeri_id);
+                $fotolama = $cekdata['galeri_sampul'];
+                if ($fotolama != 'default.png') {
+                    unlink('img/sampul/' . $fotolama);
+                    unlink('img/sampul/thumb/' . 'thumb_' . $fotolama);
+                }
+
+                $cekfoto = $this->galeri_foto->hapusfoto($galeri_id);
+                foreach ($cekfoto as $cekfoto) {
+                    $oldfoto  = $cekfoto['nama_foto'];
+                    unlink('img/foto/' . $oldfoto);
+                    unlink('img/foto/thumb/' . 'thumb_' . $oldfoto);
+                }
+
+                // Data Log START
+                $date        = date("Y-m-d");
+                $time        = date("H:i:s");
+                $user_nama   = session()->get('nama');
+                $galeri_nama = $cekdata['galeri_nama'];
+
+                $log = [
+                    'log_user'      => $user_nama,
+                    'log_dt'        => $date,
+                    'log_tm'        => $time,
+                    'log_status'    => 'BERHASIL',
+                    'log_aktivitas' => 'Hapus Galeri ' . $galeri_nama,
+                ];
+                $this->log->insert($log);
+                // Data Log END
+
+                $this->galeri->delete($galeri_id);
+                $this->galeri_foto->hapusket($galeri_id);
+
+                $msg = [
+                    'sukses' => 'Galeri Berhasil Dihapus'
+                ];
+
+                echo json_encode($msg);
+            } else {
+                $msg = [
+                    'gagal' => 'Galeri Harus Kosong Jika Akan Dihapus'
+                ];
+
+                echo json_encode($msg);
             }
-
-            $cekfoto = $this->galeri_foto->hapusfoto($galeri_id);
-            foreach ($cekfoto as $cekfoto) {
-                $oldfoto  = $cekfoto['nama_foto'];
-                unlink('img/foto/' . $oldfoto);
-                unlink('img/foto/thumb/' . 'thumb_' . $oldfoto);
-            }
-
-            // Data Log START
-            $date        = date("Y-m-d");
-            $time        = date("H:i:s");
-            $user_nama   = session()->get('nama');
-            $galeri_nama = $cekdata['galeri_nama'];
-
-           $log = [
-               'log_user'      => $user_nama,
-               'log_dt'        => $date,
-               'log_tm'        => $time,
-               'log_status'    => 'BERHASIL',
-               'log_aktivitas' => 'Hapus Galeri ' . $galeri_nama,
-           ];
-           $this->log->insert($log);
-           // Data Log END
-
-            $this->galeri->delete($galeri_id);
-            $this->galeri_foto->hapusket($galeri_id);
-
-            $msg = [
-                'sukses' => 'Galeri Berhasil Dihapus'
-            ];
-
-            echo json_encode($msg);
+            
         }
     }
 
