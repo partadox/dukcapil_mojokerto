@@ -13,23 +13,14 @@
             <br>
             <div class="modal-body">
                 <p class="mt-1 mb-2">Catatan :<br>
-                    <i class="mdi mdi-information"></i> File yang diupload harus berformat PDF (jika file PPT bisa diconvert dulu ke PDF). <br>
+                    <i class="mdi mdi-information"></i> File yang diupload harus berformat PDF. <br>
                 </p>
-                <div class="form-group row">
-                    <label for="" class="col-sm-2 col-form-label">Nama Data Paparan</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="zi_nama" name="zi_nama">
-                        <div class="invalid-feedback error_zi_nama">
-
-                        </div>
-                    </div>
-                </div>
-
+                <input type="hidden" class="form-control" id="gisa_id" name="gisa_id" value="<?= $gisa_id ?>">
                 <div class="form-group row">
                     <label for="" class="col-sm-2 col-form-label">Upload</label>
                     <div class="col-sm-10">
-                        <input type="file" class="form-control" id="zi_file" name="zi_file" accept=".pdf">
-                        <div class="invalid-feedback error_zi_file">
+                        <input type="file" class="form-control" id="gisa_file" name="gisa_file" accept=".pdf">
+                        <div class="invalid-feedback error_gisa_file">
 
                         </div>
                     </div>
@@ -54,7 +45,7 @@
 
             $.ajax({
                 type: "post",
-                url: '<?= site_url('zi/zi_upload') ?>',
+                url: '<?= site_url('gisa/gisa_upload') ?>',
                 data: data,
                 enctype: 'multipart/form-data',
                 processData: false,
@@ -72,20 +63,12 @@
                 success: function(response) {
                     if (response.error) {
 
-                        if (response.error.zi_file) {
-                            $('#zi_file').addClass('is-invalid');
-                            $('.error_zi_file').html(response.error.zi_file);
+                        if (response.error.gisa_file) {
+                            $('#gisa_file').addClass('is-invalid');
+                            $('.error_gisa_file').html(response.error.gisa_file);
                         } else {
-                            $('#zi_file').removeClass('is-invalid');
-                            $('.error_zi_file').html('');
-                        }
-
-                        if (response.error.zi_nama) {
-                            $('#zi_nama').addClass('is-invalid');
-                            $('.error_zi_nama').html(response.error.zi_nama);
-                        } else {
-                            $('#zi_nama').removeClass('is-invalid');
-                            $('.error_zi_nama').html('');
+                            $('#gisa_file').removeClass('is-invalid');
+                            $('.error_gisa_file').html('');
                         }
 
                     } else {

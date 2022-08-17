@@ -4,6 +4,37 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
+	public function visitor()
+	{
+		//Get Datetime now
+		$dt        = date("Y-m-d");
+		$tm 	   = date("H:i:s");
+
+		//Get IP
+		if (!empty($_SERVER['HTTP_CLIENT_IP']))   //Checking IP From Shared Internet
+		{
+			$ip = $_SERVER['HTTP_CLIENT_IP'];
+		}
+		elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //To Check IP is Pass From Proxy
+		{
+			$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		}
+		else
+		{
+			$ip = $_SERVER['REMOTE_ADDR'];
+		}
+
+		$cek_visitor			= $this->visitor->cek_visitor($dt, $ip);
+		if ($cek_visitor == 0) {
+			$visitor = [
+				'visitor_ip'      	=> $ip,
+				'visitor_dt'        => $dt,
+				'visitor_tm'        => $tm,
+			];
+			$this->visitor->insert($visitor);
+		}
+	}
+
 	public function not_found()
 	{
 		$this->cachePage(360);
@@ -43,6 +74,7 @@ class Home extends BaseController
 
 	public function index()
 	{
+		$this->visitor();
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
 		$alamat                 = $this->informasi->find(3);
@@ -91,6 +123,7 @@ class Home extends BaseController
 
     public function galeri()
     {
+		$this->visitor();
 		$galeri = 'tb_galeri';
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
@@ -139,6 +172,7 @@ class Home extends BaseController
 
     public function single_galeri($galeri_slug)
     {
+		$this->visitor();
 		$cek 		= $this->galeri->cek_single_galeri($galeri_slug);
 
 		if ($cek == 1) {
@@ -194,6 +228,7 @@ class Home extends BaseController
 
 	public function berita()
     {
+		$this->visitor();
         $berita = 'tb_berita';
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
@@ -242,6 +277,7 @@ class Home extends BaseController
 
 	public function single_berita($berita_slug)
     {
+		$this->visitor();
 		$cek 			= $this->berita->cek_single_berita($berita_slug);
 
 		if ($cek == 1) {
@@ -294,6 +330,7 @@ class Home extends BaseController
 
 	public function pengumuman()
     {
+		$this->visitor();
         $pengumuman 			= 'tb_pengumuman';
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
@@ -339,6 +376,7 @@ class Home extends BaseController
 
 	public function single_pengumuman($pengumuman_slug)
     {
+		$this->visitor();
 		$cek 						= $this->pengumuman->cek_single_pengumuman($pengumuman_slug);
 
 		if ($cek == 1) {
@@ -392,6 +430,7 @@ class Home extends BaseController
 
     public function profil_sambutan()
     {
+		$this->visitor();
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
 		$alamat                 = $this->informasi->find(3);
@@ -436,6 +475,7 @@ class Home extends BaseController
 
     public function profil_visimisi()
     {
+		$this->visitor();
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
 		$alamat                 = $this->informasi->find(3);
@@ -476,6 +516,7 @@ class Home extends BaseController
 
     public function profil_strukturorganisasi()
     {
+		$this->visitor();
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
 		$alamat                 = $this->informasi->find(3);
@@ -515,6 +556,7 @@ class Home extends BaseController
 
     public function profil_tupoksi()
     {
+		$this->visitor();
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
 		$alamat                 = $this->informasi->find(3);
@@ -555,6 +597,7 @@ class Home extends BaseController
 
     public function profil_kebijakan_mutu()
     {
+		$this->visitor();
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
 		$alamat                 = $this->informasi->find(3);
@@ -595,6 +638,7 @@ class Home extends BaseController
 
     public function inovasi_layanan()
     {
+		$this->visitor();
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
 		$alamat                 = $this->informasi->find(3);
@@ -631,6 +675,7 @@ class Home extends BaseController
 
     public function layanan_kategori($LK_slug)
     {
+		$this->visitor();
 		$cek 					= $this->layanan_kategori->cek_layanan_kategori($LK_slug);
 
 		if ($cek == 1) {
@@ -679,6 +724,7 @@ class Home extends BaseController
 
 	public function layanan($layanan_slug)
     {
+		$this->visitor();
 		$layanan_data				= $this->layanan->layanan_data($layanan_slug);
 
 		$cek 						= $this->layanan->cek_layanan($layanan_slug);
@@ -729,6 +775,7 @@ class Home extends BaseController
 
 	public function alur_adu()
     {
+		$this->visitor();
 		$data_medfo				= $this->medfo->alur_adu();
 		
 		$alur_adu				= $data_medfo->medfo_isi;
@@ -768,6 +815,7 @@ class Home extends BaseController
 
 	public function ikm()
     {
+		$this->visitor();
 		$data_medfo				= $this->medfo->ikm();
 		
 		$ikm					= $data_medfo->medfo_isi;
@@ -807,6 +855,7 @@ class Home extends BaseController
 
 	public function hubungi_kami()
     {
+		$this->visitor();
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
 		$alamat                 = $this->informasi->find(3);
@@ -842,6 +891,7 @@ class Home extends BaseController
 	
 	public function penghargaan()
     {
+		$this->visitor();
         $penghargaan 			= 'tb_penghargaan';
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
@@ -890,6 +940,7 @@ class Home extends BaseController
 
 	public function single_penghargaan($penghargaan_slug)
     {
+		$this->visitor();
 		$cek 						= $this->penghargaan->cek_single_penghargaan($penghargaan_slug);
 
 		if ($cek == 1) {
@@ -942,6 +993,7 @@ class Home extends BaseController
 
 	public function zona_integritas()
     {
+		$this->visitor();
 		$nomor_telepon          = $this->informasi->find(1);
 		$email                  = $this->informasi->find(2);
 		$alamat                 = $this->informasi->find(3);
@@ -977,5 +1029,95 @@ class Home extends BaseController
 			'zi_file'				=> $this->zi->list(),
 		];
         return view('halaman/zona_integritas', $data);
+    }
+
+	public function gisa_kategori()
+    {
+		$this->visitor();
+
+			$nomor_telepon          = $this->informasi->find(1);
+			$email                  = $this->informasi->find(2);
+			$alamat                 = $this->informasi->find(3);
+			$facebook               = $this->informasi->find(4);
+			$twitter                = $this->informasi->find(5);
+			$instagram              = $this->informasi->find(6);
+			$youtube                = $this->informasi->find(7);
+			$jam_senin_kamis        = $this->informasi->find(8);
+			$jam_jumat              = $this->informasi->find(9);
+			$jam_sabtu_minggu       = $this->informasi->find(10);
+			$wa_akta                = $this->informasi->find(11);
+			$wa_ktp                 = $this->informasi->find(12);
+			$wa_pengaduan           = $this->informasi->find(13);
+
+			$data = [
+				'layanan_kategori' 		=> $this->layanan_kategori->list(),
+				'gisa_kategori' 		=> $this->gisa_kategori->list(),
+				'nomor_telepon'         => $nomor_telepon['informasi_value'],
+				'email'                 => $email['informasi_value'],
+				'alamat'                => $alamat['informasi_value'],
+				'facebook'              => $facebook['informasi_value'],
+				'twitter'               => $twitter['informasi_value'],
+				'instagram'             => $instagram['informasi_value'],
+				'youtube'               => $youtube['informasi_value'],
+				'jam_senin_kamis'       => $jam_senin_kamis['informasi_value'],
+				'jam_jumat'             => $jam_jumat['informasi_value'],
+				'jam_sabtu_minggu'      => $jam_sabtu_minggu['informasi_value'],
+				'wa_akta'               => $wa_akta['informasi_value'],
+				'wa_ktp'                => $wa_ktp['informasi_value'],
+				'wa_pengaduan'          => $wa_pengaduan['informasi_value'],
+			];
+
+			return view('gisa_kategori', $data);
+    }
+
+	public function gisa($gisa_slug)
+    {
+		$this->visitor();
+		$gisa_data				= $this->gisa->gisa_data($gisa_slug);
+
+		$cek 						= $this->gisa->cek_gisa($gisa_slug);
+
+		if ($cek == '1') {
+			$gisa_kategori			= $gisa_data->gisa_kategori;
+			$GK						= $this->gisa_kategori->find($gisa_kategori);
+			$nomor_telepon          = $this->informasi->find(1);
+			$email                  = $this->informasi->find(2);
+			$alamat                 = $this->informasi->find(3);
+			$facebook               = $this->informasi->find(4);
+			$twitter                = $this->informasi->find(5);
+			$instagram              = $this->informasi->find(6);
+			$youtube                = $this->informasi->find(7);
+			$jam_senin_kamis        = $this->informasi->find(8);
+			$jam_jumat              = $this->informasi->find(9);
+			$jam_sabtu_minggu       = $this->informasi->find(10);
+			$wa_akta                = $this->informasi->find(11);
+			$wa_ktp                 = $this->informasi->find(12);
+			$wa_pengaduan           = $this->informasi->find(13);
+
+			$data = [
+				'gisa_kategori' 		=> $this->gisa_kategori->list(),
+				'GK_slug'				=> $GK['GK_slug'],
+				'GK_nama'				=> $GK['GK_nama'],
+				'gisa'					=> $gisa_data,
+				'nomor_telepon'         => $nomor_telepon['informasi_value'],
+				'email'                 => $email['informasi_value'],
+				'alamat'                => $alamat['informasi_value'],
+				'facebook'              => $facebook['informasi_value'],
+				'twitter'               => $twitter['informasi_value'],
+				'instagram'             => $instagram['informasi_value'],
+				'youtube'               => $youtube['informasi_value'],
+				'jam_senin_kamis'       => $jam_senin_kamis['informasi_value'],
+				'jam_jumat'             => $jam_jumat['informasi_value'],
+				'jam_sabtu_minggu'      => $jam_sabtu_minggu['informasi_value'],
+				'wa_akta'               => $wa_akta['informasi_value'],
+				'wa_ktp'                => $wa_ktp['informasi_value'],
+				'wa_pengaduan'          => $wa_pengaduan['informasi_value'],
+			];
+
+			return view('halaman/single_gisa', $data);
+		} else {
+			return redirect()->to('/home');
+		}
+		
     }
 }

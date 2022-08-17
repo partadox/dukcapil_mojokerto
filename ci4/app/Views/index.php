@@ -96,7 +96,7 @@
                         <i class="bi bi-user-ID"></i>
                     </div>
                     <div class="feature-text">
-                        <h5 class="text-center">Jumlah Penduduk Berdasar Jenis Kelamin</h5>
+                        <h5 class="text-center">Jumlah Penduduk</h5>
                         <h4 class="text-center"><?= $jp_jenkel ?></h4>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                         <i class="bi bi-user-ID"></i>
                     </div>
                     <div class="feature-text">
-                        <h5 class="text-center">Jumlah Penduduk Wajib KTP berdasarkan Jenis Kelamin</h5>
+                        <h5 class="text-center">Jumlah Penduduk Wajib KTP</h5>
                         <h4 class="text-center"><?= $jp_wajib_ktp_jenkel ?></h4>
                     </div>
                 </div>

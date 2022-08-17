@@ -96,6 +96,12 @@ $routes->get('/home/penghargaan/(:any)', 'Home::single_penghargaan/$1');
 
 $routes->get('/auth/zi', 'Zi::index', ['filter' => 'Validasilogin']);
 
+$routes->get('/auth/gisa', 'Gisa::index', ['filter' => 'Validasilogin']);
+$routes->get('/auth/gisa/kategori', 'Gisa::kategori', ['filter' => 'Validasilogin']);
+$routes->get('/home/gisa_kategori/', 'Home::Gisa_kategori');
+$routes->get('/home/gisa_kategori/(:any)', 'Home::Gisa_kategori/$1');
+$routes->get('/home/gisa/(:any)', 'Home::Gisa/$1');
+
 
 /**
  * --------------------------------------------------------------------

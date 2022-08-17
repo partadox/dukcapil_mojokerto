@@ -36,7 +36,7 @@
 
             <div class="form-group">
                 <div class="mb-3">
-                <label class="form-label">Jumlah Penduduk Berdasar Jenis Kelamin <code>*</code> </label>
+                <label class="form-label">Jumlah Penduduk <code>*</code> </label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                     <div class="input-group-text"> <i class="fa fa-users"></i> </div>
@@ -49,7 +49,7 @@
 
             <div class="form-group">
                 <div class="mb-3">
-                <label class="form-label">Jumlah Penduduk Wajib KTP berdasarkan Jenis Kelamin <code>*</code> </label>
+                <label class="form-label">Jumlah Penduduk Wajib KTP<code>*</code> </label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                     <div class="input-group-text"> <i class="fa fa-users"></i> </div>

@@ -98,7 +98,7 @@
     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-store-24-hour"></i> <span> Lapak GISA <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span> </a>
     <ul class="submenu">
         <li><a href="<?= base_url('auth/gisa/kategori') ?>">Kategori</a></li>
-        <li><a href="<?= base_url('auth/gisa/subkategori') ?>">Sub. Kategori</a></li>
+        <li><a href="<?= base_url('auth/gisa') ?>">File Lapak Gisa</a></li>
     </ul>
 </li>
 

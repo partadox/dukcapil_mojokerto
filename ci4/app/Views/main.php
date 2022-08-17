@@ -160,7 +160,7 @@
                         </li>
 
                         <li class="nav-item ">
-                            <a href="#" class="nav-link">
+                            <a href="<?= base_url('home/gisa_kategori/') ?>" class="nav-link">
                                 Lapak #GISA
                             </a>
                         </li>

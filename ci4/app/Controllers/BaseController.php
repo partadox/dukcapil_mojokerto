@@ -45,6 +45,9 @@ use App\Models\Model_Medfo;
 use App\Models\Model_Penghargaan;
 use App\Models\Model_Log;
 use App\Models\Model_Zi;
+use App\Models\Model_Visitor;
+use App\Models\Model_Gisa;
+use App\Models\Model_Gisa_Kategori;
 
 class BaseController extends Controller
 {
@@ -100,5 +103,8 @@ class BaseController extends Controller
 		$this->penghargaan 		= new Model_Penghargaan;		
 		$this->log 				= new Model_Log;
 		$this->zi 				= new Model_Zi;
+		$this->visitor 			= new Model_Visitor;
+		$this->gisa 			= new Model_Gisa;
+		$this->gisa_kategori 	= new Model_Gisa_Kategori;
 	}
 }

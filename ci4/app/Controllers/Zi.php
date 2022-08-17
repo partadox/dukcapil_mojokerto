@@ -102,23 +102,6 @@ class Zi extends BaseController
         }
     }
 
-
-    public function tupoksi_formpdf()
-    {
-        if ($this->request->isAJAX()) {
-            $data_tupoksi = $this->profil->find(9); 
-            $tupoksi_pdf  = $data_tupoksi['profil_value'];
-            $data = [
-                'title'             => 'Upload File PDF Peraturan Terkait Tupoksi',
-                'tupoksi_pdf'       => $tupoksi_pdf,
-            ];
-            $msg = [
-                'sukses' => view('auth/profil/upload_pdf', $data)
-            ];
-            echo json_encode($msg);
-        }
-    }
-
     public function zi_upload()
     {
         if ($this->request->isAJAX()) {
