@@ -216,7 +216,7 @@
                 <div class="counter-item">
                     <i class="ti-dashboard"></i>
                     <div class="count">
-                        <span class="counter h2">-</span>
+                        <span class="counter h2"><?= $visitor_hariini ?></span>
                     </div>
                     <p>Hari ini </p>
                 </div>
@@ -226,7 +226,7 @@
                 <div class="counter-item">
                     <i class="ti-dashboard"></i>
                     <div class="count">
-                        <span class="counter h2">-</span>
+                        <span class="counter h2"><?= $visitor_bulanini ?></span>
                     </div>
                     <p>Bulan ini</p>
                 </div>
@@ -236,7 +236,7 @@
                 <div class="counter-item">
                     <i class="ti-dashboard"></i>
                     <div class="count">
-                        <span class="counter h2">-</span>
+                        <span class="counter h2"><?= $visitor_tahunini ?></span>
                     </div>
                     <p>Tahun ini</p>
                 </div>
@@ -246,7 +246,7 @@
                 <div class="counter-item">
                     <i class="ti-heart"></i>
                     <div class="count">
-                        <span class="counter h2">-</span>
+                        <span class="counter h2"><?= $visitor_total ?></span>
                     </div>
                     <p>Total</p>
                 </div>

@@ -91,8 +91,17 @@ class Home extends BaseController
 		$jp_jenkel              = $this->informasi->find(14);
 		$jp_wajib_ktp_jenkel    = $this->informasi->find(15);
 		$jp_kepemilikan_kk      = $this->informasi->find(16);
+		$tes3              	 	= $this->visitor->count_visitor_bulan_ini();
+        $visitor_bulanini   	= $tes3['0']['bulanini'];
+        $visitor_total      	= $tes3['0']['total'];
+        $visitor_tahunini   	= $this->visitor->count_visitor_tahun_ini();
+        $visitor_hariini    	= $this->visitor->count_visitor_hari_ini();
 
 		$data = [
+			'visitor_hariini'  		=> $visitor_hariini,
+            'visitor_bulanini'  	=> $visitor_bulanini,
+            'visitor_tahunini'  	=> $visitor_tahunini,
+            'visitor_total'     	=> $visitor_total,
 			'layanan_kategori' 		=> $this->layanan_kategori->list(),
 			'galeri'      			=> $this->galeri->list_top3(),
 			'berita'      			=> $this->berita->list_top6(),

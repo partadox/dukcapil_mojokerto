@@ -48,4 +48,11 @@ class Model_Pengumuman extends Model
             ->where('pengumuman_pin', 1)
             ->get()->getResultArray();
     }
+
+    public function count_pengumuman()
+    {
+        return $this->table('tb_pengumuman')
+            ->select('pengumuman_id')
+            ->countAllResults();
+    }
 }

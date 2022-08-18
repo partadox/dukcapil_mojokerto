@@ -48,22 +48,11 @@ class Model_Berita extends Model
             ->where('berita_pin', 1)
             ->get()->getResultArray();
     }
-    // public function published()
-    // {
-    //     return $this->table('berita')
-    //         ->join('user', 'user.user_id = berita.user_id')
-    //         ->join('kategori', 'kategori.kategori_id = berita.kategori_id')
-    //         ->where('status', 'published')
-    //         ->orderBy('berita_id', 'ASC')
-    //         ->get()->getResultArray();
-    // }
-
-    // public function detail_berita($slug_berita)
-    // {
-    //     return $this->table('berita')
-    //         ->join('user', 'user.user_id = berita.user_id')
-    //         ->join('kategori', 'kategori.kategori_id = berita.kategori_id')
-    //         ->where('slug_berita', $slug_berita)
-    //         ->get()->getRow();
-    // }
+    
+    public function count_berita()
+    {
+        return $this->table('tb_berita')
+            ->select('berita_id')
+            ->countAllResults();
+    }
 }

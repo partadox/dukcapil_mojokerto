@@ -37,7 +37,7 @@
                     <div>
                         <h5 class="font-16">Jumlah Galeri</h5>
                     </div>
-                    <h3 class="mt-4">4</h3>
+                    <h3 class="mt-4"><?= $galeri ?></h3>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
                     <div>
                         <h5 class="font-16">Jumlah Berita</h5>
                     </div>
-                    <h3 class="mt-4">4</h3>
+                    <h3 class="mt-4"><?= $berita ?></h3>
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                     <div>
                         <h5 class="font-16">Jumlah Pengumuman</h5>
                     </div>
-                    <h3 class="mt-4">4</h3>
+                    <h3 class="mt-4"><?= $pengumuman ?></h3>
                 </div>
             </div>
         </div>
@@ -91,7 +91,7 @@
                       <div>
                           <h5 class="font-16">Hari Ini</h5>
                       </div>
-                      <h3 class="mt-4">4</h3>
+                      <h3 class="mt-4"><?= $visitor_hariini ?></h3>
                   </div>
               </div>
           </div>
@@ -105,7 +105,7 @@
                       <div>
                           <h5 class="font-16">Bulan Ini</h5>
                       </div>
-                      <h3 class="mt-4">4</h3>
+                      <h3 class="mt-4"><?= $visitor_bulanini ?></h3>
                   </div>
               </div>
           </div>
@@ -119,7 +119,7 @@
                       <div>
                           <h5 class="font-16">Tahun Ini</h5>
                       </div>
-                      <h3 class="mt-4">4</h3>
+                      <h3 class="mt-4"><?= $visitor_tahunini ?></h3>
                   </div>
               </div>
           </div>
@@ -133,7 +133,7 @@
                       <div>
                           <h5 class="font-16">Total</h5>
                       </div>
-                      <h3 class="mt-4">4</h3>
+                      <h3 class="mt-4"><?= $visitor_total ?></h3>
                   </div>
               </div>
           </div>

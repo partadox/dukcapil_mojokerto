@@ -43,15 +43,6 @@ class Model_Galeri extends Model
             ->get()->getResultArray();
     }
 
-    //frontend
-    // public function detail_gallery($id)
-    // {
-    //     return $this->table('tb_galeri')
-    //         ->join('user', 'user.user_id = gallery.user_id')
-    //         ->where('galeri_id', $id)
-    //         ->get()->getRow();
-    // }
-
     public function cek_single_galeri($galeri_slug)
     {
         return $this->table('tb_galeri')
@@ -64,6 +55,13 @@ class Model_Galeri extends Model
         return $this->table('tb_galeri')
             ->where('galeri_slug', $galeri_slug)
             ->get()->getRow();
+    }
+
+    public function count_galeri()
+    {
+        return $this->table('tb_galeri')
+            ->select('galeri_id')
+            ->countAllResults();
     }
 
 }
