@@ -25,14 +25,14 @@ class Model_Gisa extends Model
             ->get()->getRow();
     }
 
-    public function cek_gisa($gisa_slug)
+    public function cek_gisa($GK_id)
     {
         return $this->table('tb_gisa')
-            ->where('gisa_slug', $gisa_slug)
+            ->where('gisa_kategori', $GK_id)
             ->countAllResults();
     }
 
-    public function list_gisa_kategori($GK_id)
+    public function list_GK_id($GK_id)
     {
         return $this->table('tb_gisa')
             ->where('gisa_kategori', $GK_id)

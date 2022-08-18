@@ -1070,15 +1070,64 @@ class Home extends BaseController
 			return view('gisa_kategori', $data);
     }
 
+	public function gisa_subkategori($GK_slug)
+    {
+		$this->visitor();
+		$gisa_kategori_id			= $this->gisa_kategori->gisa_kategori_id($GK_slug);
+		$GK_id 						= $gisa_kategori_id->GK_id;
+
+		$cek 						= $this->gisa->cek_gisa($GK_id);
+		$list 						= $this->gisa->list_GK_id($GK_id);
+
+		if ($cek != NULL) {
+			$GK						= $this->gisa_kategori->find($GK_id);
+			$nomor_telepon          = $this->informasi->find(1);
+			$email                  = $this->informasi->find(2);
+			$alamat                 = $this->informasi->find(3);
+			$facebook               = $this->informasi->find(4);
+			$twitter                = $this->informasi->find(5);
+			$instagram              = $this->informasi->find(6);
+			$youtube                = $this->informasi->find(7);
+			$jam_senin_kamis        = $this->informasi->find(8);
+			$jam_jumat              = $this->informasi->find(9);
+			$jam_sabtu_minggu       = $this->informasi->find(10);
+			$wa_akta                = $this->informasi->find(11);
+			$wa_ktp                 = $this->informasi->find(12);
+			$wa_pengaduan           = $this->informasi->find(13);
+
+			$data = [
+				'layanan_kategori' 		=> $this->layanan_kategori->list(),
+				'GK_slug'				=> $GK['GK_slug'],
+				'GK_nama'				=> $GK['GK_nama'],
+				'gisa'					=> $list,
+				'nomor_telepon'         => $nomor_telepon['informasi_value'],
+				'email'                 => $email['informasi_value'],
+				'alamat'                => $alamat['informasi_value'],
+				'facebook'              => $facebook['informasi_value'],
+				'twitter'               => $twitter['informasi_value'],
+				'instagram'             => $instagram['informasi_value'],
+				'youtube'               => $youtube['informasi_value'],
+				'jam_senin_kamis'       => $jam_senin_kamis['informasi_value'],
+				'jam_jumat'             => $jam_jumat['informasi_value'],
+				'jam_sabtu_minggu'      => $jam_sabtu_minggu['informasi_value'],
+				'wa_akta'               => $wa_akta['informasi_value'],
+				'wa_ktp'                => $wa_ktp['informasi_value'],
+				'wa_pengaduan'          => $wa_pengaduan['informasi_value'],
+			];
+
+			return view('gisa_subkategori', $data);
+		} else {
+			return redirect()->to('/home');
+		}
+		
+    }
+
 	public function gisa($gisa_slug)
     {
 		$this->visitor();
-		$gisa_data				= $this->gisa->gisa_data($gisa_slug);
+		$gisa_data					= $this->gisa->gisa_data($gisa_slug);
+		$gisa_kategori 				= $gisa_data->gisa_kategori;
 
-		$cek 						= $this->gisa->cek_gisa($gisa_slug);
-
-		if ($cek == '1') {
-			$gisa_kategori			= $gisa_data->gisa_kategori;
 			$GK						= $this->gisa_kategori->find($gisa_kategori);
 			$nomor_telepon          = $this->informasi->find(1);
 			$email                  = $this->informasi->find(2);
@@ -1095,7 +1144,7 @@ class Home extends BaseController
 			$wa_pengaduan           = $this->informasi->find(13);
 
 			$data = [
-				'gisa_kategori' 		=> $this->gisa_kategori->list(),
+				'layanan_kategori' 		=> $this->layanan_kategori->list(),
 				'GK_slug'				=> $GK['GK_slug'],
 				'GK_nama'				=> $GK['GK_nama'],
 				'gisa'					=> $gisa_data,
@@ -1115,9 +1164,6 @@ class Home extends BaseController
 			];
 
 			return view('halaman/single_gisa', $data);
-		} else {
-			return redirect()->to('/home');
-		}
 		
     }
 }

@@ -17,6 +17,14 @@ class Model_Gisa_Kategori extends Model
             ->get()->getResultArray();
     }
 
+    public function gisa_kategori_id($GK_slug)
+    {
+        return $this->table('tb_gisa_kategori')
+            ->select('GK_id') 
+            ->where('GK_slug', $GK_slug)
+            ->get()->getUnbufferedRow();
+    }
+
     public function cek_gisa_kategori($GK_slug)
     {
         return $this->table('tb_gisa_kategori')

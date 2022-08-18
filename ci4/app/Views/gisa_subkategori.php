@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
           <div class="page-header-content">
-            <h1><?= $LK_nama ?></h1>
+            <h4><a style="color:white;" href="<?= base_url('home/gisa_kategori/') ?>"> Kategori Lapak Gisa Unduhan </a> <i style="color:white;" class="ti-arrow-right"></i> <a style="color:white;"> <?= $GK_nama ?></a> </h4>
           </div>
       </div>
     </div>
@@ -23,8 +23,7 @@
               <thead>
                   <tr>
                       <th width="2%">No</th>
-                      <th width="15%">Kategori</th>
-                      <th width="5%">Tindakan</th>
+                      <th width="15%">Subkategori</th>
                   </tr>
               </thead>
               <tbody>
@@ -33,27 +32,13 @@
                     $nomor++; ?>
                     <tr>
                         <td><?= $nomor ?></td>
-                        <td> <a href=""><?= esc($data['GK_nama']) ?></a> </td>
+                        <td> <a href="<?= base_url('home/gisa/' . $data['gisa_slug']) ?>"><?= esc($data['gisa_subkategori']) ?></a> </td>
                     </tr>
 
                 <?php endforeach; ?>
             </tbody>
             </table>
 
-                <?php
-                foreach ($gisa as $data_gisa) :?>
-                    <div class="category-item category-bg-3 mb-3">
-                      <a href="<?= base_url('home/gisa/'. $data_gisa['gisa_slug']) ?>">
-                        <div class="category-icon">
-                            <i class="bi bi-file"></i>
-                        </div>
-                        <h3 style="color:#eee;"><?= esc($data_gisa['gisa_subkategori']) ?></h3>
-                      </a>
-                    </div>
-
-                <?php endforeach; ?>
-
-                
 
             </div>
         </div>
