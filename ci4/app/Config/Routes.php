@@ -103,6 +103,8 @@ $routes->get('/home/gisa_kategori/', 'Home::gisa_kategori');
 $routes->get('/home/gisa_subkategori/(:any)', 'Home::gisa_subkategori/$1');
 $routes->get('/home/gisa/(:any)', 'Home::gisa/$1');
 
+$routes->get('/auth/user', 'User::index', ['filter' => 'Validasilogin']);
+
 
 /**
  * --------------------------------------------------------------------

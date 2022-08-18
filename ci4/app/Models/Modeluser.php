@@ -8,7 +8,7 @@ class Modeluser extends Model
 {
     protected $table      = 'user ';
     protected $primaryKey = 'user_id';
-    protected $allowedFields = ['username', 'nama', 'email', 'password', 'foto', 'level', 'active'];
+    protected $allowedFields = ['username', 'nama', 'password', 'level', 'active'];
 
     //backend
     public function list()

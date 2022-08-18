@@ -87,7 +87,7 @@ class BaseController extends Controller
 		
 		// $this->kelulusan = new Modelkelulusan($request);
 		// $this->konfigurasi = new Modelkonfigurasi;
-		// $this->user = new Modeluser;
+		$this->user = new Modeluser;
 
 		$this->galeri			= new Model_Galeri;
 		$this->galeri_foto		= new Model_Galeri_Foto;

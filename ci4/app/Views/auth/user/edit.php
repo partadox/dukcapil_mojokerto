@@ -8,53 +8,44 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?= form_open('konfigurasi/update', ['class' => 'formedit']) ?>
+            <?= form_open('user/update', ['class' => 'formedit']) ?>
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <input type="hidden" class="form-control" id="user_id" value="<?= $user_id ?>" name="user_id" readonly>
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" class="form-control" id="username" value="<?= $username ?>" name=" username">
+                    <input type="text" class="form-control" id="username" name="username" value="<?= $username ?>">
                     <div class="invalid-feedback errorUser">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Nama</label>
-                    <input type="text" class="form-control" value="<?= $nama ?>" id="nama" name="nama">
+                    <input type="text" class="form-control" id="nama" name="nama" value="<?= $nama ?>">
                     <div class="invalid-feedback errorNama">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" class="form-control" value="<?= $email ?>" id="email" name="email">
-                    <div class="invalid-feedback errorEmail">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Password <br> <small>*Masukkan password baru jika ingin mengganti password.</small></label>
+                    <label>Password</label>
                     <input type="password" class="form-control" id="password" name="password">
-                    <div class="invalid-feedback errorPass">
-                    </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label>Level</label>
-                    <select name="level" id="level" class="form-control">
-                        <option value="2" <?php if ($level == '2') echo "selected"; ?>>Admin</option>
-                        <option value="1" <?php if ($level == '1') echo "selected"; ?>>Author</option>
+                    <label>Status Aktif</label>
+                    <select name="active" id="active" class="form-control">
+                        <option value="1"  <?php if ($active == '1') echo "selected"; ?>>Aktif</option>
+                        <option value="0"  <?php if ($active == '0') echo "selected"; ?>>Nonaktif</option>
                     </select>
-                    <div class="invalid-feedback errorLevel">
+                    <div class="invalid-feedback erroractive">
                     </div>
                 </div>
 
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary btnsimpan"><i class="fa fa-share-square"></i> Simpan</button>
+                <button type="submit" class="btn btn-primary btnupdate"><i class="fa fa-save"></i> Simpan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
 
@@ -62,6 +53,7 @@
         </div>
     </div>
 </div>
+
 <script>
     $(document).ready(function() {
         $('.formedit').submit(function(e) {
@@ -73,18 +65,17 @@
                     user_id: $('input#user_id').val(),
                     username: $('input#username').val(),
                     nama: $('input#nama').val(),
-                    email: $('input#email').val(),
                     password: $('input#password').val(),
-                    level: $('select#level').val(),
+                    active: $('select#active').val(),
                 },
                 dataType: "json",
                 beforeSend: function() {
-                    $('.btnsimpan').attr('disable', 'disable');
-                    $('.btnsimpan').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <i>Loading...</i>');
+                    $('.btnupdate').attr('disable', 'disable');
+                    $('.btnupdate').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <i>Loading...</i>');
                 },
                 complete: function() {
-                    $('.btnsimpan').removeAttr('disable', 'disable');
-                    $('.btnsimpan').html('<i class="fa fa-share-square"></i>  Simpan');
+                    $('.btnupdate').removeAttr('disable', 'disable');
+                    $('.btnupdate').html('<i class="fa fa-share-square"></i>  Simpan');
                 },
                 success: function(response) {
                     if (response.error) {
@@ -104,34 +95,17 @@
                             $('.errorNama').html('');
                         }
 
-                        if (response.error.email) {
-                            $('#email').addClass('is-invalid');
-                            $('.errorEmail').html(response.error.email);
+                        if (response.error.active) {
+                            $('#active').addClass('is-invalid');
+                            $('.erroractive').html(response.error.active);
                         } else {
-                            $('#email').removeClass('is-invalid');
-                            $('.errorEmail').html('');
-                        }
-
-                        if (response.error.password) {
-                            $('#password').addClass('is-invalid');
-                            $('.errorPass').html(response.error.password);
-                        } else {
-                            $('#password').removeClass('is-invalid');
-                            $('.errorPass').html('');
-                        }
-
-                        if (response.error.level) {
-                            $('#level').addClass('is-invalid');
-                            $('.errorLevel').html(response.error.level);
-                        } else {
-                            $('#level').removeClass('is-invalid');
-                            $('.errorLevel').html('');
+                            $('#active').removeClass('is-invalid');
+                            $('.erroractive').html('');
                         }
 
                     } else {
                         Swal.fire({
                             title: "Berhasil!",
-                            text: response.sukses,
                             icon: "success",
                             showConfirmButton: false,
                             timer: 1500

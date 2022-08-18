@@ -13,9 +13,7 @@
 <?= $this->endSection('judul') ?>
 
 <?= $this->section('isi') ?>
-<p class="sub-title"> <button type="button" class="btn btn-primary btn-sm tambahuser"><i class=" fa fa-plus-circle"></i> Tambah User</button>
-    <br>
-    <small> <i class="fa fa-info-circle"></i> Klik foto untuk memperbarui foto!</small>
+<p class="sub-title"> <button type="button" class="btn btn-primary tambahuser"><i class=" fa fa-plus-circle"></i> Tambah User</button>
 </p>
 <div class="viewdata">
 </div>
@@ -27,7 +25,7 @@
 <script>
     function listuser() {
         $.ajax({
-            url: "<?= site_url('konfigurasi/getuser') ?>",
+            url: "<?= site_url('user/getdata') ?>",
             dataType: "json",
             success: function(response) {
                 $('.viewdata').html(response.data);
@@ -40,7 +38,7 @@
         $('.tambahuser').click(function(e) {
             e.preventDefault();
             $.ajax({
-                url: "<?= site_url('konfigurasi/formuser') ?>",
+                url: "<?= site_url('user/formtambah') ?>",
                 dataType: "json",
                 success: function(response) {
                     $('.viewmodal').html(response.data).show();

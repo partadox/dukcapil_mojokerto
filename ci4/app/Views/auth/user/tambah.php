@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?= form_open('konfigurasi/simpanuser', ['class' => 'formtambah']) ?>
+            <?= form_open('user/simpan', ['class' => 'formtambah']) ?>
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <div class="form-group">
@@ -26,13 +26,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" class="form-control" id="email" name="email">
-                    <div class="invalid-feedback errorEmail">
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <label>Password</label>
                     <input type="password" class="form-control" id="password" name="password">
                     <div class="invalid-feedback errorPass">
@@ -41,20 +34,20 @@
 
 
                 <div class="form-group">
-                    <label>Level</label>
-                    <select name="level" id="level" class="form-control">
+                    <label>Status Aktif</label>
+                    <select name="active" id="active" class="form-control">
                         <option Disabled=true Selected=true>Pilih</option>
-                        <option value="2">Admin</option>
-                        <option value="1">Author</option>
+                        <option value="1">Aktif</option>
+                        <option value="0">Nonaktif</option>
                     </select>
-                    <div class="invalid-feedback errorLevel">
+                    <div class="invalid-feedback erroractive">
                     </div>
                 </div>
 
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary btnsimpan"><i class="fa fa-share-square"></i> Simpan</button>
+                <button type="submit" class="btn btn-primary btnsimpan"><i class="fa fa-save"></i> Simpan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
 
@@ -65,7 +58,6 @@
 <script>
     $(document).ready(function() {
         $('.formtambah').submit(function(e) {
-            let title = $('input#judul_berita').val()
             e.preventDefault();
             $.ajax({
                 type: "post",
@@ -73,11 +65,8 @@
                 data: {
                     username: $('input#username').val(),
                     nama: $('input#nama').val(),
-                    email: $('input#email').val(),
                     password: $('input#password').val(),
-                    level: $('select#level').val(),
-                    foto: 'default.png',
-                    active: '0',
+                    active: $('select#active').val(),
                 },
                 dataType: "json",
                 beforeSend: function() {
@@ -106,14 +95,6 @@
                             $('.errorNama').html('');
                         }
 
-                        if (response.error.email) {
-                            $('#email').addClass('is-invalid');
-                            $('.errorEmail').html(response.error.email);
-                        } else {
-                            $('#email').removeClass('is-invalid');
-                            $('.errorEmail').html('');
-                        }
-
                         if (response.error.password) {
                             $('#password').addClass('is-invalid');
                             $('.errorPass').html(response.error.password);
@@ -122,18 +103,17 @@
                             $('.errorPass').html('');
                         }
 
-                        if (response.error.level) {
-                            $('#level').addClass('is-invalid');
-                            $('.errorLevel').html(response.error.level);
+                        if (response.error.active) {
+                            $('#active').addClass('is-invalid');
+                            $('.erroractive').html(response.error.active);
                         } else {
-                            $('#level').removeClass('is-invalid');
-                            $('.errorLevel').html('');
+                            $('#active').removeClass('is-invalid');
+                            $('.erroractive').html('');
                         }
 
                     } else {
                         Swal.fire({
                             title: "Berhasil!",
-                            text: response.sukses,
                             icon: "success",
                             showConfirmButton: false,
                             timer: 1500
