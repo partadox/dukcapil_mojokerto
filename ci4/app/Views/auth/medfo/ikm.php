@@ -88,7 +88,7 @@
 
                     } else {
                         Swal.fire({
-                            title: "Alur Pengaduan Masyarakat Berhasil Diupdate!",
+                            title: "Data IKM Diupdate!",
                             icon: "success",
                             showConfirmButton: false,
                             timer: 1500

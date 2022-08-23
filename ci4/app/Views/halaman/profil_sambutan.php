@@ -6,9 +6,6 @@
     <div class="container">
         <div class="post-single">
             <div class="single-post-content">
-                <blockquote>
-                    <?= $sambutan_isi ?>
-                </blockquote>
                 <div class="author">
                     <div class="author-img">
                         <img src="<?= base_url()?>/img/profil/<?= $sambutan_foto ?>" alt="" class="img-fluid">
@@ -18,6 +15,9 @@
                         <p><?= $sambutan_jabatan ?></p>
                     </div>
                 </div>
+                <blockquote>
+                    <?= $sambutan_isi ?>
+                </blockquote>
             </div>
         </div>
     </div>

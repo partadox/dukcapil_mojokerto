@@ -10,7 +10,17 @@
                 <div class="banner-content">
                     <span class="subheading">DISPENDUKCAPIL KOTA MOJOKERTO</span>
                     <h1>Kami Ada <br> Untuk Anda</h1>
-                    <p>Pengumuman penting <i class="ti-arrow-right"></i></p> <br>
+                    <a href="#">
+                        <img style="object-fit:fill;
+                        width:150px;
+                        height:150px;" src="<?= base_url('/img/walikota/walikota.png') ?>" alt="" class="img-fluid">
+                    </a>
+                    <a href="#">
+                        <img style="object-fit:fill;
+                        width:150px;
+                        height:150px;" src="<?= base_url('/img/walikota/wakilwalikota.png') ?>" alt="" class="img-fluid">
+                    </a>
+                    <!-- <p class="mt-3" >Pengumuman penting <i class="ti-arrow-right"></i></p> <br> -->
                 </div>
             </div>
 
@@ -96,7 +106,6 @@
                         <i class="bi bi-user-ID"></i>
                     </div>
                     <div class="feature-text">
-                        <h5 class="text-center">Jumlah Penduduk</h5>
                         <h4 class="text-center"><?= $jp_jenkel ?></h4>
                     </div>
                 </div>
@@ -107,7 +116,6 @@
                         <i class="bi bi-user-ID"></i>
                     </div>
                     <div class="feature-text">
-                        <h5 class="text-center">Jumlah Penduduk Wajib KTP</h5>
                         <h4 class="text-center"><?= $jp_wajib_ktp_jenkel ?></h4>
                     </div>
                 </div>
@@ -118,7 +126,6 @@
                         <i class="bi bi-user-ID"></i>
                     </div>
                     <div class="feature-text">
-                        <h5 class="text-center">Jumlah Kepemilikan Kartu Keluarga (KK)</h5>
                         <h4 class="text-center"><?= $jp_kepemilikan_kk ?></h4>
                     </div>
                 </div>
@@ -156,6 +163,88 @@
         </div>
     </div>
 </section>
+
+<!-- Semua Berita-->
+<section class="section-padding course-grid-2 bg-feature">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="section-heading">
+                    <span class="subheading">Kami Ada Untuk Anda</span>
+                    <h3>Berita</h3>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="course-btn text-lg-right"><a href="<?= base_url('home/berita') ?>" class="btn btn-main">Lihat Selengkapnya <i class="fa fa-arrow-right ml-2"></i></a></div>
+            </div>
+        </div>
+
+        <div class="row course-gallery ">
+            <?php
+            foreach ($berita as $data_berita) :?>
+
+                <div class="course-item berita col-lg-4 col-md-6">
+                    <div class="course-block style-5">
+                        <div class="course-img">
+                            <a href="<?= base_url('home/berita/' . $data_berita['berita_slug']) ?>">
+                                <img style="object-fit:fill;
+                                width:600px;
+                                height:380px;
+                                border: solid 1px #CCC" src="<?= base_url('img/berita/' . $data_berita['berita_sampul']) ?>" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                        
+                        <div class="course-content">
+                            <span>Berita</span>
+                            <h4><a href="<?= base_url('home/berita/' . $data_berita['berita_slug']) ?>"><?= esc($data_berita['berita_judul']) ?></a></h4>    
+                        
+                            <div class="course-meta">
+                                <span><i class="bi bi-calendar"></i><?= date_indo($data_berita['berita_create_dt']) ?></span>
+                                <span><i class="bi bi-user-ID"></i><?= esc($data_berita['berita_creator']) ?></span>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            
+            <?php endforeach; ?>
+
+        </div>
+    </div>
+</section>
+<!-- Berita End -->
+
+<!-- Pengumuman Start -->
+<section class="about-section section-padding">
+    <div class="container">
+        <div class="row align-items-center">
+             <div class="col-lg-6 col-md-12">
+               <div class="about-img">
+                   <img src="assets/images/bg/anouncement.png" alt="" class="img-fluid">
+               </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="section-heading">
+                    <span class="subheading">Kami Ada Untuk Anda</span>
+                    <h3>Pengumuman</h3>
+                </div>
+
+                <div class="about-content">
+                    <?php
+                    foreach ($pengumuman as $data_pengumuman) :?>
+                        <div class="about-text-block">
+                            <i class="bi bi-speaker-on"></i>
+                            <h3><a href="<?= base_url('home/pengumuman/' . $data_pengumuman['pengumuman_slug']) ?>"><?= esc($data_pengumuman['pengumuman_judul']) ?></a></h3>  
+                        </div>
+                    <?php endforeach; ?>
+
+                    <a href="<?= base_url('home/pengumuman') ?>" class="btn btn-main">Lihat Selengkapnya <i class="fa fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+<!-- Pengumuman End -->
 
 <!--  Galeri Start -->
 <section class="section-padding popular-courses bg-grey">
@@ -254,89 +343,6 @@
         </div>
     </div>
 </section>
-
-
-<!-- Semua Berita-->
-<section class="section-padding course-grid-2 bg-feature">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="section-heading">
-                    <span class="subheading">Kami Ada Untuk Anda</span>
-                    <h3>Berita</h3>
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="course-btn text-lg-right"><a href="<?= base_url('home/berita') ?>" class="btn btn-main">Lihat Selengkapnya <i class="fa fa-arrow-right ml-2"></i></a></div>
-            </div>
-        </div>
-
-        <div class="row course-gallery ">
-            <?php
-            foreach ($berita as $data_berita) :?>
-
-                <div class="course-item berita col-lg-4 col-md-6">
-                    <div class="course-block style-5">
-                        <div class="course-img">
-                            <a href="<?= base_url('home/berita/' . $data_berita['berita_slug']) ?>">
-                                <img style="object-fit:fill;
-                                width:600px;
-                                height:380px;
-                                border: solid 1px #CCC" src="<?= base_url('img/berita/' . $data_berita['berita_sampul']) ?>" alt="" class="img-fluid">
-                            </a>
-                        </div>
-                        
-                        <div class="course-content">
-                            <span>Berita</span>
-                            <h4><a href="<?= base_url('home/berita/' . $data_berita['berita_slug']) ?>"><?= esc($data_berita['berita_judul']) ?></a></h4>    
-                        
-                            <div class="course-meta">
-                                <span><i class="bi bi-calendar"></i><?= date_indo($data_berita['berita_create_dt']) ?></span>
-                                <span><i class="bi bi-user-ID"></i><?= esc($data_berita['berita_creator']) ?></span>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-            
-            <?php endforeach; ?>
-
-        </div>
-    </div>
-</section>
-<!-- Berita End -->
-
-<!-- Pengumuman Start -->
-<section class="about-section section-padding">
-    <div class="container">
-        <div class="row align-items-center">
-             <div class="col-lg-6 col-md-12">
-               <div class="about-img">
-                   <img src="assets/images/bg/anouncement.png" alt="" class="img-fluid">
-               </div>
-            </div>
-            <div class="col-lg-6 col-md-12">
-                <div class="section-heading">
-                    <span class="subheading">Kami Ada Untuk Anda</span>
-                    <h3>Pengumuman</h3>
-                </div>
-
-                <div class="about-content">
-                    <?php
-                    foreach ($pengumuman as $data_pengumuman) :?>
-                        <div class="about-text-block">
-                            <i class="bi bi-speaker-on"></i>
-                            <h3><a href="<?= base_url('home/pengumuman/' . $data_pengumuman['pengumuman_slug']) ?>"><?= esc($data_pengumuman['pengumuman_judul']) ?></a></h3>  
-                        </div>
-                    <?php endforeach; ?>
-
-                    <a href="<?= base_url('home/pengumuman') ?>" class="btn btn-main-2">Lihat Selengkapnya <i class="fa fa-arrow-right ml-2"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> 
-<!-- Pengumuman End -->
 
 <!--  Link Terkait start -->
 <section class="testimonial bg-grey section-padding">
@@ -538,7 +544,7 @@
                 <div class="subscribe-form">
                     <form action="#">
                         <!-- <input type="text" class="form-control" placeholder="Email Address"> -->
-                        <a href="https://www.google.com/search?q=dispendukcapil%20kota%20mojokerto&oq=dispendukcapil+kota+mojokerto&tbs=lf:1,lf_ui:2&tbm=lcl&rflfq=1&num=10&rldimm=16599407297742711441&lqi=Ch1kaXNwZW5kdWtjYXBpbCBrb3RhIG1vam9rZXJ0b0jyoemQuq2AgAhaKRAAGAEYAiIdZGlzcGVuZHVrY2FwaWwga290YSBtb2pva2VydG8yAmlkkgERZ292ZXJubWVudF9vZmZpY2WaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUkpka3RmTkZwUkVBRaoBFhABKhIiDmRpc3BlbmR1a2NhcGlsKCY&ved=2ahUKEwiG3ajVx_H4AhWonNgFHf5oBocQvS56BAgMEAE&sa=X&rlst=f#rlfi=hd:;si:16599407297742711441,l,Ch1kaXNwZW5kdWtjYXBpbCBrb3RhIG1vam9rZXJ0b0jyoemQuq2AgAhaKRAAGAEYAiIdZGlzcGVuZHVrY2FwaWwga290YSBtb2pva2VydG8yAmlkkgERZ292ZXJubWVudF9vZmZpY2WaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUkpka3RmTkZwUkVBRaoBFhABKhIiDmRpc3BlbmR1a2NhcGlsKCY;mv:[[-7.4677909,112.439889],[-7.489777300000001,112.4257411]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:2" target="blank" style="background:#4B703A;" class="btn btn-main">Google Review<i class="fa fa-angle-right ml-2"></i> </a>
+                        <a href="https://www.google.com/search?q=dispendukcapil%20kota%20mojokerto&oq=dispendukcapil+kota+mojokerto&tbs=lf:1,lf_ui:2&tbm=lcl&rflfq=1&num=10&rldimm=16599407297742711441&lqi=Ch1kaXNwZW5kdWtjYXBpbCBrb3RhIG1vam9rZXJ0b0jyoemQuq2AgAhaKRAAGAEYAiIdZGlzcGVuZHVrY2FwaWwga290YSBtb2pva2VydG8yAmlkkgERZ292ZXJubWVudF9vZmZpY2WaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUkpka3RmTkZwUkVBRaoBFhABKhIiDmRpc3BlbmR1a2NhcGlsKCY&ved=2ahUKEwiG3ajVx_H4AhWonNgFHf5oBocQvS56BAgMEAE&sa=X&rlst=f#rlfi=hd:;si:16599407297742711441,l,Ch1kaXNwZW5kdWtjYXBpbCBrb3RhIG1vam9rZXJ0b0jyoemQuq2AgAhaKRAAGAEYAiIdZGlzcGVuZHVrY2FwaWwga290YSBtb2pva2VydG8yAmlkkgERZ292ZXJubWVudF9vZmZpY2WaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUkpka3RmTkZwUkVBRaoBFhABKhIiDmRpc3BlbmR1a2NhcGlsKCY;mv:[[-7.4677909,112.439889],[-7.489777300000001,112.4257411]];tbs:lrf:!1m4!1u3!2m2!3m1!1e1!1m4!1u2!2m2!2m1!1e1!2m1!1e2!2m1!1e3!3sIAE,lf:1,lf_ui:2" target="blank" style="background:#D16644;" class="btn btn-main">Google Review<i class="fa fa-angle-right ml-2"></i> </a>
                     </form>
                 </div>
             </div>

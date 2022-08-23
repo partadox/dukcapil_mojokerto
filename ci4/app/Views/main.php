@@ -144,6 +144,12 @@
                                 <a class="dropdown-item " href="<?= base_url('home/alur_adu') ?>">
                                     Alur Pengaduan Masyarakat
                                 </a>
+                                <a class="dropdown-item " href="<?= base_url('home/berita') ?>">
+                                    Berita
+                                </a>
+                                <a class="dropdown-item " href="<?= base_url('home/pengumuman') ?>">
+                                    Pengumuman
+                                </a>
                                 <a class="dropdown-item " href="<?= base_url('home/penghargaan') ?>">
                                     Penghargaan
                                 </a>
@@ -152,11 +158,19 @@
                                 </a> 
                             </div>
                         </li>
-                        
-                        <li class="nav-item ">
-                            <a href="<?= base_url('home/zona_integritas') ?>" class="nav-link">
-                                Zona Integritas
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbar3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Zona Integritas<i class="fa fa-angle-down"></i>
                             </a>
+                            <div class="dropdown-menu" aria-labelledby="navbar3">
+                                <a class="dropdown-item " href="http://wbs.mojokertokota.go.id/" target="_blank">
+                                    WBS
+                                </a>
+                                <a class="dropdown-item " href="<?= base_url('home/zona_integritas') ?>">
+                                Zona Integritas
+                                </a>
+                            </div>
                         </li>
 
                         <li class="nav-item ">

@@ -21,7 +21,7 @@
 
                 <?php
                 foreach ($layanan as $data_layanan) :?>
-                    <div class="category-item category-bg-3 mb-3">
+                    <div class="category-item category-bg-2 mb-3">
                       <a href="<?= base_url('home/layanan/'. $data_layanan['layanan_slug']) ?>">
                         <div class="category-icon">
                             <i class="bi bi-file"></i>

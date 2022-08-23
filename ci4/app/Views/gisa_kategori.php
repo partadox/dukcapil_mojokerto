@@ -23,7 +23,7 @@
               <thead>
                   <tr>
                       <th width="2%">No</th>
-                      <th width="15%">Kategori</th>
+                      <th width="15%">Kategori Unduhan</th>
                   </tr>
               </thead>
               <tbody>

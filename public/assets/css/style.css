@@ -161,15 +161,15 @@ BUTTONS STYLE
 }
 
 .btn-main {
-  background: #D49414;
+  background: #CF7956;
   color: #fff;
-  border-color: #D49414;
+  border-color: #CF7956;
 }
 
 .btn-main:hover {
   color: #fff;
-  border-color: #4B703A;
-  background: #4B703A;
+  border-color: #E5A88B;
+  background: #E5A88B;
 }
 
 .btn-main-2 {
@@ -263,7 +263,7 @@ Banner Area
   top: 0px;
   width: 100%;
   height: 100%;
-  background: #D5DFD3;
+  background: #e99f82;
   opacity: .85;
 }
 
@@ -470,7 +470,7 @@ Header TopBar
 .dropdown-item:hover {
   color: #fff;
   text-decoration: none;
-  background-color: #D49414;
+  background-color: #CF7956;
 }
 
 .dropdown-toggle::after {
@@ -483,7 +483,7 @@ Header TopBar
   border: 0px;
   padding: 0px;
   position: absolute;
-  border-top: 2px solid #D49414;
+  border-top: 2px solid #CF7956;
   min-width: 220px;
 }
 
@@ -687,7 +687,7 @@ Banner 2
 .subheading {
   text-transform: uppercase;
   font-size: 13px;
-  color: #4B703A;
+  color: #8f3a1f;
   font-weight: 600;
   letter-spacing: 2px;
   position: relative;
@@ -955,7 +955,7 @@ Feature Style 2
 
 .feature-item.feature-style-2:hover {
   border-color: transparent;
-  background: #D49414;
+  background: #D16644;
 }
 
 .feature-item.feature-style-2:hover .feature-icon {
@@ -1315,7 +1315,7 @@ Course Category
 }
 
 .category-bg-2 {
-  background: #4B703A;
+  background: #cf7956;
 }
 
 .category-bg-3 {
@@ -1377,7 +1377,7 @@ Course Category
 
 .counter-section {
   position: relative;
-  background: #D49414;
+  background: #CF9683;
 }
 
 .counter-section:before {
@@ -1439,7 +1439,7 @@ VIDEO SECTION
   top: 0px;
   width: 100%;
   height: 70%;
-  background: rgba(75, 112, 58, 1);
+  background: rgba(209, 102, 68, 1);
 }
 
 .video-section:after {
@@ -1718,7 +1718,7 @@ Testimonial
 }
 
 .testimonials-slides-2 .review-item .client-info i {
-  color: #D49414;
+  color: #CF7956;
   opacity: 1;
 }
 
@@ -1726,7 +1726,7 @@ Testimonial
   margin-top: 10px;
   position: absolute;
   left: 0px;
-  left: -385px;
+  left: -149px;
   bottom: 100px;
 }
 
@@ -1735,7 +1735,7 @@ Testimonial
 }
 
 .testimonials-slides-2 .owl-nav button.owl-prev:hover, .testimonials-slides-2 .owl-nav button.owl-next:hover {
-  color: #D49414;
+  color: #CF7956;
   background: transparent;
 }
 
@@ -2015,7 +2015,7 @@ OfFer COurse
 Footer Section
 ======================*/
 .footer {
-  background: #4B703A;
+  background: #b95e39;
   padding: 80px 0px 0px;
   position: relative;
   color: rgba(255, 255, 255, 0.8);
@@ -2040,7 +2040,7 @@ Footer Section
 }
 
 .footer .footer-contact ul li i {
-  color: #e5c88d;
+  color: #ffe7ca;
   margin-right: 20px;
   float: left;
   margin-top: 7px;
@@ -2670,7 +2670,7 @@ Course Page Tab Panel
   top: 0px;
   width: 100%;
   height: 100%;
-  background: #D49414;
+  background: #e59e7c;
   opacity: .98;
 }
 
@@ -5040,7 +5040,7 @@ Single Blog Page
   margin-top: 35px;
   line-height: 1.5;
   font-size: 24px;
-  background: #8fb569;
+  background: #CF7956;
   position: relative;
   padding-left: 120px;
   color: #fff;
@@ -5468,7 +5468,7 @@ Home New 8
 /* Banner style 8  */
 .banner-style-8{
   padding: 100px 0px;
-  background: #D5DFD3;
+  background: #E5A88B;
   padding-bottom: 200px;
 }
 
