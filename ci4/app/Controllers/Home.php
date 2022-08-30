@@ -91,6 +91,10 @@ class Home extends BaseController
 		$jp_jenkel              = $this->informasi->find(14);
 		$jp_wajib_ktp_jenkel    = $this->informasi->find(15);
 		$jp_kepemilikan_kk      = $this->informasi->find(16);
+		$jp_update      		= $this->informasi->find(17);
+		$foto_walkot      		= $this->profil->find(13);
+		$foto_wakil     		= $this->profil->find(14);
+		$nama_walkot_wakil      = $this->profil->find(15);
 		$tes3              	 	= $this->visitor->count_visitor_bulan_ini();
         $visitor_bulanini   	= $tes3['0']['bulanini'];
         $visitor_total      	= $tes3['0']['total'];
@@ -103,6 +107,7 @@ class Home extends BaseController
             'visitor_tahunini'  	=> $visitor_tahunini,
             'visitor_total'     	=> $visitor_total,
 			'layanan_kategori' 		=> $this->layanan_kategori->list(),
+			'layanan' 				=> $this->layanan->list(),
 			'galeri'      			=> $this->galeri->list_top3(),
 			'berita'      			=> $this->berita->list_top6(),
 			'pengumuman'  			=> $this->pengumuman->list_top3(),
@@ -126,6 +131,10 @@ class Home extends BaseController
 			'jp_jenkel'             => $jp_jenkel['informasi_value'],
 			'jp_wajib_ktp_jenkel'   => $jp_wajib_ktp_jenkel['informasi_value'],
 			'jp_kepemilikan_kk'     => $jp_kepemilikan_kk['informasi_value'],
+			'jp_update'     		=> $jp_update['informasi_value'],
+			'foto_walkot'			=> $foto_walkot['profil_value'],
+			'foto_wakil'			=> $foto_wakil['profil_value'],
+			'nama_walkot_wakil'		=> $nama_walkot_wakil['profil_value'],
 		];
 		return view('index', $data);
 	}

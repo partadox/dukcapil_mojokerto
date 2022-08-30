@@ -4,6 +4,10 @@
     <i class="fa fa-trash"></i> Hapus yang diceklist
 </button>
 
+<p class="mt-1 mb-2">Catatan :<br>
+    <i class="mdi mdi-information"></i> Agar gambar link terkait rapi disarankan menggunakan gambar dengan size 280x100 pixel. <br>
+</p>
+
 <hr>
 <table id="listlink" class="table table-striped dt-responsive " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
     <thead>

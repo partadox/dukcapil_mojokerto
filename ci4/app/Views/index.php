@@ -13,14 +13,14 @@
                     <a href="#">
                         <img style="object-fit:fill;
                         width:150px;
-                        height:150px;" src="<?= base_url('/img/walikota/walikota.png') ?>" alt="" class="img-fluid">
+                        height:150px;" src="<?= base_url('/img/walikota/' . $foto_walkot) ?>" alt="" class="img-fluid">
                     </a>
                     <a href="#">
                         <img style="object-fit:fill;
                         width:150px;
-                        height:150px;" src="<?= base_url('/img/walikota/wakilwalikota.png') ?>" alt="" class="img-fluid">
-                    </a>
-                    <!-- <p class="mt-3" >Pengumuman penting <i class="ti-arrow-right"></i></p> <br> -->
+                        height:150px;" src="<?= base_url('/img/walikota/' . $foto_wakil) ?>" alt="" class="img-fluid">
+                    </a> <br>
+                    <a class="mt-4 ml-4" ><?= $nama_walkot_wakil ?></a> <br>
                 </div>
             </div>
 
@@ -107,6 +107,7 @@
                     </div>
                     <div class="feature-text">
                         <h4 class="text-center"><?= $jp_jenkel ?></h4>
+                        <h6 class="text-center"><?= $jp_update ?></h6>
                     </div>
                 </div>
             </div>
@@ -117,6 +118,7 @@
                     </div>
                     <div class="feature-text">
                         <h4 class="text-center"><?= $jp_wajib_ktp_jenkel ?></h4>
+                        <h6 class="text-center"><?= $jp_update ?></h6>
                     </div>
                 </div>
             </div>
@@ -127,6 +129,7 @@
                     </div>
                     <div class="feature-text">
                         <h4 class="text-center"><?= $jp_kepemilikan_kk ?></h4>
+                        <h6 class="text-center"><?= $jp_update ?></h6>
                     </div>
                 </div>
             </div>
@@ -148,13 +151,13 @@
             <div class="course-categories">
                 
                     <?php
-                    foreach ($layanan_kategori as $data_LK) :?>
+                    foreach ($layanan as $data_layanan) :?>
                         <div class="category-item category-bg-2">
-                            <a href="<?= base_url('home/layanan_kategori/'. $data_LK['LK_slug']) ?>">
+                            <a href="<?= base_url('home/layanan/'. $data_layanan['layanan_slug']) ?>">
                                 <div class="category-icon">
                                     <i class="bi bi-layer"></i>
                                 </div>
-                                <h4><?= esc($data_LK['LK_nama']) ?></h4>
+                                <h4><?= esc($data_layanan['layanan_subkategori']) ?></h4>
                             </a>
                         </div>
                     <?php endforeach; ?>

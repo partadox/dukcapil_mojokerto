@@ -12,18 +12,19 @@
             <?= csrf_field(); ?>
             <br>
             <center>
-                <img class="img-thumbnail" width="70%" src="<?= site_url('/img/profil/' . $sambutan_foto) ?>" alt="Sampul Berita">
+                <img class="img-thumbnail" width="70%" src="<?= site_url('/img' . $foto) ?>" alt="Sampul Berita">
             </center>
             <div class="modal-body">
                 <p class="mt-1 mb-2">Catatan :<br>
-                    <i class="mdi mdi-information"></i> Disarankan foto memiliki ukuran persegi (ukuran panjang = ukuran lebar). <br>
+                    <i class="mdi mdi-information"></i> Disarankan foto untuk kepala dinas dispendukcapil pemberi sambutan berbentuk persegi. <br>
+                    <i class="mdi mdi-information"></i> Disarankan membuat foto pada website berikut https://pfpmaker.com/ untuk foto walikota dan wakil walikota. <br>
                 </p>
                 <div class="form-group row">
-                    <input type="hidden" value="<?= $sambutan_foto ?>" name="sambutan_foto_lama">
+                    <input type="hidden" value="<?= $profil_id ?>" name="profil_id">
                     <label for="" class="col-sm-2 col-form-label">Upload</label>
                     <div class="col-sm-10">
-                        <input type="file" class="form-control" id="sambutan_foto" name="sambutan_foto" accept=".jpg,.jpeg,.png">
-                        <div class="invalid-feedback error_sambutan_foto">
+                        <input type="file" class="form-control" id="foto" name="foto" accept=".jpg,.jpeg,.png">
+                        <div class="invalid-feedback error_foto">
 
                         </div>
                     </div>
@@ -48,7 +49,7 @@
 
             $.ajax({
                 type: "post",
-                url: '<?= site_url('profil/sambutan_foto_upload') ?>',
+                url: '<?= site_url('profil/foto_upload') ?>',
                 data: data,
                 enctype: 'multipart/form-data',
                 processData: false,
@@ -65,9 +66,9 @@
                 },
                 success: function(response) {
                     if (response.error) {
-                        if (response.error.sambutan_foto) {
-                            $('#sambutan_foto').addClass('is-invalid');
-                            $('.error_sambutan_foto').html(response.error.sambutan_foto);
+                        if (response.error.foto) {
+                            $('#foto').addClass('is-invalid');
+                            $('.error_foto').html(response.error.foto);
                         }
                     } else {
                         Swal.fire({

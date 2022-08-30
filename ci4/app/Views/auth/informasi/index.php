@@ -14,9 +14,9 @@
 
 <?= $this->section('isi') ?>
 
-<!-- <p class="mt-1 mb-2">Catatan :<br>
-    <i class="mdi mdi-information"></i> Informasi. <br>
-</p> -->
+<p class="mt-1 mb-2">Catatan :<br>
+    <i class="mdi mdi-information"></i> Untuk memberikan efek <i>"enter"</i> pada tulisan di form Data Informasi Jumlah Kependudukan Kota Mojokerto dapat memansukan sintaks &lt;br&gt;. <br>
+</p>
 
 <?= form_open('informasi/update', ['class' => 'formupdate']) ?>
 <?= csrf_field() ?>
@@ -70,6 +70,19 @@
                     <input type="text" class="form-control" id="jp_kepemilikan_kk" name="jp_kepemilikan_kk" value="<?= $jp_kepemilikan_kk ?>">
                 </div>
                 <div class="invalid-feedback error_jp_kepemilikan_kk"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="mb-3">
+                <label class="form-label">Tanggal Data Update <code>*</code> </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                    <div class="input-group-text"> <i class="fa fa-calendar-day"></i> </div>
+                    </div>
+                    <input type="text" class="form-control" id="jp_update" name="jp_update" value="<?= $jp_update ?>">
+                </div>
+                <div class="invalid-feedback error_jp_update"></div>
                 </div>
             </div>
 
@@ -340,6 +353,7 @@
                     jp_jenkel: $('input#jp_jenkel').val(),
                     jp_wajib_ktp_jenkel: $('input#jp_wajib_ktp_jenkel').val(),
                     jp_kepemilikan_kk: $('input#jp_kepemilikan_kk').val(),
+                    jp_update: $('input#jp_update').val(),
                 },
                 dataType: "json",
                 beforeSend: function() {
@@ -479,6 +493,14 @@
                         } else {
                             $('#jp_kepemilikan_kk').removeClass('is-invalid');
                             $('.error_jp_kepemilikan_kk').html('');
+                        }
+
+                        if (response.error.jp_update) {
+                            $('#jp_update').addClass('is-invalid');
+                            $('.error_jp_update').html(response.error.jp_update);
+                        } else {
+                            $('#jp_update').removeClass('is-invalid');
+                            $('.error_jp_update').html('');
                         }
 
                     } else {

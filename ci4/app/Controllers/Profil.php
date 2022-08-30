@@ -25,6 +25,10 @@ class Profil extends BaseController
         $kualitas_deskripsi 	= $this->profil->find(10);
 		$kualitas_pdf 			= $this->profil->find(11);
 
+        $foto_walkot 			= $this->profil->find(13);
+        $foto_wakil			    = $this->profil->find(14);
+        $nama_walkot_wakil		= $this->profil->find(15);
+
             $data = [
             'title'                 => 'Data Halaman Profil Web Dispendukcapil Kota Mojokerto',
             'sambutan_isi'			=> $sambutan_isi['profil_value'],
@@ -38,6 +42,9 @@ class Profil extends BaseController
             'tupoksi_pdf'           => $tupoksi_pdf['profil_value'],
             'kualitas_deskripsi'	=> $kualitas_deskripsi['profil_value'],
 			'kualitas_pdf'			=> $kualitas_pdf['profil_value'],
+            'foto_walkot'			=> $foto_walkot['profil_value'],
+            'foto_wakil'			=> $foto_wakil['profil_value'],
+            'nama_walkot_wakil'		=> $nama_walkot_wakil['profil_value'],
             ];
             return view('auth/profil/index', $data);
         }
@@ -114,14 +121,23 @@ class Profil extends BaseController
         }
     }
 
-    public function sambutan_formfoto()
+    public function form_foto()
     {
         if ($this->request->isAJAX()) {
-            $data_profi_sambutan = $this->profil->find(4); 
-            $sambutan_foto       = $data_profi_sambutan['profil_value'];
+            $profil_id           = $this->request->getVar('profil_id');
+            $profil              = $this->profil->find($profil_id); 
+            $foto                = $profil['profil_value'];
+
+            if ($profil_id == 4) {
+                $foto_tampil =  '/' . 'profil/' . $foto;
+            } elseif($profil_id == 13 || $profil_id == 14) {
+                $foto_tampil = '/' . 'walikota/' . $foto;
+            }
+            
             $data = [
-                'title'             => 'Upload Foto Pemberi Sambutan',
-                'sambutan_foto'     => $sambutan_foto,
+                'title'             => 'Upload Foto',
+                'foto'              => $foto_tampil,
+                'profil_id'         => $profil_id,
             ];
             $msg = [
                 'sukses' => view('auth/profil/upload', $data)
@@ -130,16 +146,16 @@ class Profil extends BaseController
         }
     }
 
-    public function sambutan_foto_upload()
+    public function foto_upload()
     {
         if ($this->request->isAJAX()) {
 
             $validation = \Config\Services::validation();
 
             $valid = $this->validate([
-                'sambutan_foto' => [
+                'foto' => [
                     'label' => 'Upload Sampul Berita',
-                    'rules' => 'uploaded[sambutan_foto]|mime_in[sambutan_foto,image/png,image/jpg,image/jpeg]|is_image[sambutan_foto]',
+                    'rules' => 'uploaded[foto]|mime_in[foto,image/png,image/jpg,image/jpeg]|is_image[foto]',
                     'errors' => [
                         'uploaded' => 'Masukkan Gambar',
                         'mime_in' => 'Harus Gambar!'
@@ -149,16 +165,23 @@ class Profil extends BaseController
             if (!$valid) {
                 $msg = [
                     'error' => [
-                        'sambutan_foto' => $validation->getError('sambutan_foto')
+                        'foto' => $validation->getError('foto')
                     ]
                 ];
             } else {
 
                 //check
-                $fotolama = $this->request->getVar('sambutan_foto_lama');
-                unlink('img/profil/' . $fotolama);
+                $profil_id           = $this->request->getVar('profil_id');
+                $profil_data         = $this->profil->find($profil_id);
+                $fotolama            = $profil_data['profil_value'];
 
-                $filegambar = $this->request->getFile('sambutan_foto');
+                if ($profil_id == 4) {
+                    unlink('img/profil/' . $fotolama);
+                } elseif($profil_id == 13 || $profil_id == 14) {
+                    unlink('img/walikota/' . $fotolama);
+                }
+
+                $filegambar = $this->request->getFile('foto');
 
                 //Get Datetime now
                 $date        = date("Y-m-d");
@@ -169,12 +192,19 @@ class Profil extends BaseController
                     'profil_value' => $nama_filegambar
                 ];
 
-                $this->profil->update(4, $updatedata);
+                $this->profil->update($profil_id, $updatedata);
 
-                \Config\Services::image()
+                if ($profil_id == 4) {
+                    \Config\Services::image()
                     ->withFile($filegambar)
                     ->fit(350, 350, 'center')
                     ->save('img/profil/' . $nama_filegambar);
+                } elseif($profil_id == 13 || $profil_id == 14) {
+                    \Config\Services::image()
+                    ->withFile($filegambar)
+                    ->fit(350, 350, 'center')
+                    ->save('img/walikota/' . $nama_filegambar);
+                }
 
                 // Data Log START
                 $date         = date("Y-m-d");
@@ -186,7 +216,7 @@ class Profil extends BaseController
                    'log_dt'        => $date,
                    'log_tm'        => $time,
                    'log_status'    => 'BERHASIL',
-                   'log_aktivitas' => 'Edit Profil - Foto Pemberi Sambutan',
+                   'log_aktivitas' => 'Edit Profil Foto Pemberi Sambutan / Walikota / Wakil Walikota',
                ];
                $this->log->insert($log);
                // Data Log END
@@ -589,6 +619,57 @@ class Profil extends BaseController
                ];
                $this->log->insert($log);
                // Data Log END
+
+                $msg = [
+                    'sukses' => [
+                        'link' => 'profil'
+                    ]
+                ];
+            }
+            echo json_encode($msg);
+        }
+    }
+
+    public function update_nama_walkot_wakil()
+    {
+        if ($this->request->isAJAX()) {
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'nama_walkot_wakil' => [
+                    'label' => 'Nama Walikota dan Wakil Walikota',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} tidak boleh kosong',
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'nama_walkot_wakil'     => $validation->getError('nama_walkot_wakil'),
+                    ]
+                ];
+            } else {
+
+                //Get Datetime now
+                $date        = date("Y-m-d");
+                $time        = date("H:i:s");
+                //Get nama User
+                $user_nama   = session()->get('nama');
+
+                $update1 = [ 'profil_value' => $this->request->getVar('nama_walkot_wakil')];
+                $this->profil->update(15, $update1);
+
+                // Data Log START
+                $log = [
+                    'log_user'      => $user_nama,
+                    'log_dt'        => $date,
+                    'log_tm'        => $time,
+                    'log_status'    => 'BERHASIL',
+                    'log_aktivitas' => 'Edit Profil - Nama walikota dan wakil',
+                ];
+                $this->log->insert($log);
+                // Data Log END
 
                 $msg = [
                     'sukses' => [

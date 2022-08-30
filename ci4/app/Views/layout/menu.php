@@ -84,7 +84,7 @@
 <li>
     <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-information-variant"></i> <span> Media & Informasi <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span> </a>
     <ul class="submenu">
-        <li><a href="<?= base_url('auth/medfo/alur_adu') ?>">Alur Pengaduan Masy.</a></li>
+        <!-- <li><a href="<?= base_url('auth/medfo/alur_adu') ?>">Alur Pengaduan Masy.</a></li> -->
         <li><a href="<?= base_url('auth/medfo/penghargaan') ?>">Penghargaan</a></li>
         <li><a href="<?= base_url('auth/medfo/ikm') ?>">Indeks Kepuasan Masy.</a></li>
     </ul>

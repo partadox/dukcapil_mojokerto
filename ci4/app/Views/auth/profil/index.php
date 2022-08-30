@@ -61,7 +61,7 @@
                 <div class="mb-3">
                 <label class="form-label">Foto Pemberi Sambutan <code>*</code> </label>
                 <h6>
-                    <button type="button" onclick="foto()" class="btn btn-primary btn-sm"><i class="fa fa-images"></i> FOTO</button>
+                    <button type="button" onclick="foto(4)" class="btn btn-primary btn-sm"><i class="fa fa-images"></i> FOTO</button>
                 </h6>
                 </div>
             </div>
@@ -248,6 +248,62 @@
     </div>
 </div>
 
+<div class="card shadow-lg">
+    <div class="card-header pb-0">
+        <h6 class="card-title mb-2">Foto Walikota, Foto Wakil Walikota, Nama Walikota dan Wakil Walikota</h6>
+        <div class="card-options">
+            <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+            <a class="card-options-remove" href="#" data-bs-toggle="card-remove"><i class="fe fe-x"></i></a>
+        </div>
+    </div>
+    <div class="card-body">
+        <?= form_open('profil/update_nama_walkot_wakil', ['class' => 'update_nama_walkot_wakil']) ?>
+        <?= csrf_field() ?>
+        <div class="container-fluid">
+
+            <div class="form-group">
+                <div class="mb-3">
+                <label class="form-label">Nama Walikota dan Wakil Walikota <code>*</code> </label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                    <div class="input-group-text"> <i class="fa fa-users"></i> </div>
+                    </div>
+                    <input type="inputan" class="form-control" id="nama_walkot_wakil" name="nama_walkot_wakil" value="<?= $nama_walkot_wakil ?>">
+                </div>
+                <div class="invalid-feedback error_nama_walkot_wakil"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="mb-3">
+                <label class="form-label">Foto Walikota <code>*</code> </label>
+                <h6>
+                    <button type="button" onclick="foto(13)" class="btn btn-primary btn-sm"><i class="fa fa-images"></i> Foto Walikota</button>
+                </h6>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="mb-3">
+                <label class="form-label">Foto Wakil Walikota <code>*</code> </label>
+                <h6>
+                    <button type="button" onclick="foto(14)" class="btn btn-primary btn-sm"><i class="fa fa-images"></i> Foto Wakil Walikota</button>
+                </h6>
+                </div>
+            </div>
+             
+            <div style="position: absolute; right: 0;" class="row">
+                <input class="btn btn-warning mr-4" type="submit" value="Update Data Walikota dan Wakil" ></input>
+            </div>
+
+            <br>
+            
+        </div>
+        <?= form_close() ?>
+    </div>
+</div>
+
+
 
 <div class="viewmodal">
 </div>
@@ -258,7 +314,8 @@
 <div class="viewmodalpdf2">
 </div>
 
-
+<div class="viewmodalfoto1">
+</div>
 
 <script>
     $(document).ready(function() {
@@ -542,12 +599,54 @@
 
     });
 
-    function foto() {
+    $('.update_nama_walkot_wakil').submit(function(e) {
+            e.preventDefault();
             $.ajax({
                 type: "post",
-                url: "<?= site_url('Profil/sambutan_formfoto') ?>",
+                url: $(this).attr('action'),
                 data: {
-                    
+                    nama_walkot_wakil: $('input#nama_walkot_wakil').val(),
+                },
+                dataType: "json",
+                beforeSend: function() {
+                    $('.btnsimpan').attr('disable', 'disable');
+                    $('.btnsimpan').html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> <i>Loading...</i>');
+                },
+                complete: function() {
+                    $('.btnsimpan').removeAttr('disable', 'disable');
+                    $('.btnsimpan').html('<i class="fa fa-share-square"></i>  Simpan');
+                },
+                success: function(response) {
+                    if (response.error) {
+
+                        if (response.error.nama_walkot_wakil) {
+                            $('#nama_walkot_wakil').addClass('is-invalid');
+                            $('.error_nama_walkot_wakil').html(response.error.nama_walkot_wakil);
+                        } else {
+                            $('#nama_walkot_wakil').removeClass('is-invalid');
+                            $('.error_nama_walkot_wakil').html('');
+                        }
+
+                    } else {
+                        Swal.fire({
+                            title: "Nama Walikota dan Wakil Walikota Berhasil Diupdate!",
+                            icon: "success",
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(function() {
+                                window.location = response.sukses.link;
+                        });
+                    }
+                }
+            });
+        })
+
+    function foto(profil_id) {
+            $.ajax({
+                type: "post",
+                url: "<?= site_url('Profil/form_foto') ?>",
+                data: {
+                    profil_id : profil_id
                 },
                 dataType: "json",
                 success: function(response) {

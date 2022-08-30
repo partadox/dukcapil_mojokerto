@@ -29,6 +29,7 @@ class Informasi extends BaseController
             $jp_jenkel              = $this->informasi->find(14);
             $jp_wajib_ktp_jenkel    = $this->informasi->find(15);
             $jp_kepemilikan_kk      = $this->informasi->find(16);
+            $jp_update              = $this->informasi->find(17);
 
             $data = [
                 'title'                 => 'Data Informasi Dispendukcapil Kota Mojokerto',
@@ -48,6 +49,7 @@ class Informasi extends BaseController
                 'jp_jenkel'             => $jp_jenkel['informasi_value'],
                 'jp_wajib_ktp_jenkel'   => $jp_wajib_ktp_jenkel['informasi_value'],
                 'jp_kepemilikan_kk'     => $jp_kepemilikan_kk['informasi_value'],
+                'jp_update'             => $jp_update['informasi_value'],
             ];
             return view('auth/informasi/index', $data);
         }
@@ -169,6 +171,13 @@ class Informasi extends BaseController
                     'errors' => [
                         'required' => '{field} tidak boleh kosong',
                     ]
+                ],
+                'jp_update' => [
+                    'label' => 'Tanggal Data Update',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} tidak boleh kosong',
+                    ]
                 ]
             ]);
             if (!$valid) {
@@ -190,6 +199,7 @@ class Informasi extends BaseController
                         'jp_jenkel'         => $validation->getError('jp_jenkel'),
                         'jp_wajib_ktp_jenkel'=> $validation->getError('jp_wajib_ktp_jenkel'),
                         'jp_kepemilikan_kk' => $validation->getError('jp_kepemilikan_kk'),
+                        'jp_update'         => $validation->getError('jp_update'),
                     ]
                 ];
             } else {
@@ -216,6 +226,7 @@ class Informasi extends BaseController
                 $update14 = [ 'informasi_value' => $this->request->getVar('jp_jenkel')];
                 $update15 = [ 'informasi_value' => $this->request->getVar('jp_wajib_ktp_jenkel')];
                 $update16 = [ 'informasi_value' => $this->request->getVar('jp_kepemilikan_kk')];
+                $update17 = [ 'informasi_value' => $this->request->getVar('jp_update')];
                 $this->informasi->update(1, $update1);
                 $this->informasi->update(2, $update2);
                 $this->informasi->update(3, $update3);
@@ -232,6 +243,7 @@ class Informasi extends BaseController
                 $this->informasi->update(14, $update14);
                 $this->informasi->update(15, $update15);
                 $this->informasi->update(16, $update16);
+                $this->informasi->update(17, $update17);
 
                 // Data Log START
                 $log = [

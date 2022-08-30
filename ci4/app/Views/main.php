@@ -141,9 +141,9 @@
                                 Media & Informasi<i class="fa fa-angle-down"></i>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbar3">
-                                <a class="dropdown-item " href="<?= base_url('home/alur_adu') ?>">
+                                <!-- <a class="dropdown-item " href="<?= base_url('home/alur_adu') ?>">
                                     Alur Pengaduan Masyarakat
-                                </a>
+                                </a> -->
                                 <a class="dropdown-item " href="<?= base_url('home/berita') ?>">
                                     Berita
                                 </a>
