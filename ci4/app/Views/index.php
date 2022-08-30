@@ -139,32 +139,32 @@
 
 <!--  Pelayanan start-->
 <section class="section-padding">
-    <div class="container">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-7">
-                <div class="section-heading center-heading">
-                    <h3>Pelayanan</h3>
-                </div>
-            </div>
-        </div>
-        <div class="row no-gutters">
-            <div class="course-categories">
-                
-                    <?php
-                    foreach ($layanan as $data_layanan) :?>
-                        <div class="category-item category-bg-2">
-                            <a href="<?= base_url('home/layanan/'. $data_layanan['layanan_slug']) ?>">
-                                <div class="category-icon">
-                                    <i class="bi bi-layer"></i>
-                                </div>
-                                <h4><?= esc($data_layanan['layanan_subkategori']) ?></h4>
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
-                
+    
+    <div class="row align-items-center justify-content-center">
+        <div class="col-lg-7">
+            <div class="section-heading center-heading">
+                <h3>Pelayanan</h3>
             </div>
         </div>
     </div>
+    <div class="row no-gutters">
+        <div class="course-categories">
+            
+                <?php
+                foreach ($layanan as $data_layanan) :?>
+                    <div class="category-item category-bg-2">
+                        <a href="<?= base_url('home/layanan/'. $data_layanan['layanan_slug']) ?>">
+                            <div class="category-icon">
+                                <i class="bi bi-layer"></i>
+                            </div>
+                            <h4><?= esc($data_layanan['layanan_subkategori']) ?></h4>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            
+        </div>
+    </div>
+    
 </section>
 
 <!-- Semua Berita-->
