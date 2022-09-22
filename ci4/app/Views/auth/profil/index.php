@@ -208,7 +208,7 @@
 
 <div class="card shadow-lg">
     <div class="card-header pb-0">
-        <h6 class="card-title mb-2">Kualitas Mutu
+        <h6 class="card-title mb-2">Kebijakan Mutu
  </h6>
         <div class="card-options">
             <a class="card-options-collapse" href="#" data-bs-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
@@ -222,7 +222,7 @@
 
             <div class="form-group">
                 <div class="mb-3">
-                <label class="form-label">Deskripsi Kualitas Mutu<code>*</code> </label>
+                <label class="form-label">Deskripsi Kebijakan Mutu<code>*</code> </label>
                 <textarea type="text" class="form-control" id="kualitas_deskripsi" name="kualitas_deskripsi"> <?= $kualitas_deskripsi ?></textarea>
                 <div class="invalid-feedback error_kualitas_deskripsi"></div>
                 </div>
@@ -238,7 +238,7 @@
             </div>
              
             <div style="position: absolute; right: 0;" class="row">
-                <input class="btn btn-warning mr-4" type="submit" value="Update Kualitas Mutu" ></input>
+                <input class="btn btn-warning mr-4" type="submit" value="Update Kebijakan Mutu" ></input>
             </div>
 
             <br>

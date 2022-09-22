@@ -552,7 +552,7 @@ class Profil extends BaseController
             $data_kualitas = $this->profil->find(11); 
             $kualitas_pdf  = $data_kualitas['profil_value'];
             $data = [
-                'title'             => 'Upload File PDF Terkait Kualitas Mutu',
+                'title'             => 'Upload File PDF Terkait Kebijakan Mutu',
                 'kualitas_pdf'       => $kualitas_pdf,
             ];
             $msg = [
