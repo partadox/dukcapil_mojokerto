@@ -283,14 +283,14 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <div class="mb-3">
                 <label class="form-label">Foto Wakil Walikota <code>*</code> </label>
                 <h6>
                     <button type="button" onclick="foto(14)" class="btn btn-primary btn-sm"><i class="fa fa-images"></i> Foto Wakil Walikota</button>
                 </h6>
                 </div>
-            </div>
+            </div> -->
              
             <div style="position: absolute; right: 0;" class="row">
                 <input class="btn btn-warning mr-4" type="submit" value="Update Data Walikota dan Wakil" ></input>
