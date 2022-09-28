@@ -6,21 +6,21 @@
 <section class="banner-style-8">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-12 col-lg-4">
+            <div class="col-md-12 col-lg-4 mt-2">
                 <div class="banner-content">
                     <span class="subheading">DISPENDUKCAPIL KOTA MOJOKERTO</span>
                     <h1>Kami Ada <br> Untuk Anda</h1>
                     <a href="#">
                         <img style="object-fit:fill;
-                        width:150px;
-                        height:150px;" src="<?= base_url('/img/walikota/' . $foto_walkot) ?>" alt="" class="img-fluid">
-                    </a>
-                    <a href="#">
+                        width:250px;
+                        height:250px;" src="<?= base_url('/img/walikota/' . $foto_walkot) ?>" alt="" class="img-fluid">
+                    </a> <br> <br>
+                    <!-- <a href="#">
                         <img style="object-fit:fill;
                         width:150px;
                         height:150px;" src="<?= base_url('/img/walikota/' . $foto_wakil) ?>" alt="" class="img-fluid">
-                    </a> <br>
-                    <a class="mt-4 ml-4" ><?= $nama_walkot_wakil ?></a> <br>
+                    </a> <br> -->
+                    <a style="color:white; font-size:35px; margin-left: 30px;" ><?= $nama_walkot_wakil ?></a> <br> <br>
                 </div>
             </div>
 

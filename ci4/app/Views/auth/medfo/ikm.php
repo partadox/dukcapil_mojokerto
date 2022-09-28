@@ -39,7 +39,7 @@
             </div>
              
             <div style="position: absolute; right: 0;" class="row">
-                <input class="btn btn-warning mr-4" type="submit" value="Update Sambutan" ></input>
+                <input class="btn btn-warning mr-4" type="submit" value="Update" ></input>
             </div>
 
             <br>
