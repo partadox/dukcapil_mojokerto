@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Su-sub-kategori Gisa </label>
+                    <label>Sub-sub-kategori Gisa </label>
                     <input type="text" class="form-control" id="gisa_subkategori" name="gisa_subkategori">
                     <div class="invalid-feedback error_gisa_subkategori">
                     </div>
