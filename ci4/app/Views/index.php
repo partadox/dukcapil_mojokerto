@@ -154,7 +154,11 @@
                         <div class="col-lg-3 col-md-6">
                             <div class="course-category">
                                 <div class="category-icon">
-                                    <i class="bi bi-layer"></i>
+                                <img style="object-fit:fill;
+                                width:150px;
+                                height:150px;
+                                border-radius: 50%;
+                                border: solid 1px #CCC" src="<?= base_url('/img/layanan/' . $data_layanan['layanan_icon'])?>" alt="" class="img-fluid">
                                 </div>
                                 <h4><a href="<?= base_url('home/layanan/'. $data_layanan['layanan_slug']) ?>"><?= esc($data_layanan['layanan_subkategori']) ?></a></h4>
                             </div>

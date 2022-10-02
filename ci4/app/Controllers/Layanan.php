@@ -97,6 +97,7 @@ class Layanan extends BaseController
                 $simpandata = [
                     'layanan_kategori'       => $this->request->getVar('layanan_kategori'),
                     'layanan_subkategori'    => $layanan_subkategori,
+                    'layanan_icon'           => 'default.png',
                     'layanan_slug'           => $this->request->getVar('layanan_slug'),
                     'layanan_deskripsi'      => $this->request->getVar('layanan_deskripsi'),
                 ];
@@ -484,6 +485,95 @@ class Layanan extends BaseController
                 'sukses' => 'Data layanan Berhasil Dihapus'
             ];
 
+            echo json_encode($msg);
+        }
+    }
+
+    public function formupload()
+    {
+        if ($this->request->isAJAX()) {
+            $layanan_id = $this->request->getVar('layanan_id');
+            $list =  $this->layanan->find($layanan_id);
+            $data = [
+                'title'     => 'Upload Icon Layanan',
+                'list'      => $list,
+                'layanan_id' => $layanan_id
+            ];
+            $msg = [
+                'sukses' => view('auth/layanan/upload', $data)
+            ];
+            echo json_encode($msg);
+        }
+    }
+
+    public function doupload()
+    {
+        if ($this->request->isAJAX()) {
+
+            $layanan_id = $this->request->getVar('layanan_id');
+
+            $validation = \Config\Services::validation();
+
+            $valid = $this->validate([
+                'layanan_icon' => [
+                    'label' => 'Upload icon layanan',
+                    'rules' => 'uploaded[layanan_icon]|mime_in[layanan_icon,image/png,image/jpg,image/jpeg]|is_image[layanan_icon]',
+                    'errors' => [
+                        'uploaded' => 'Masukkan Gambar',
+                        'mime_in' => 'Harus Gambar!'
+                    ]
+                ]
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'layanan_icon' => $validation->getError('layanan_icon')
+                    ]
+                ];
+            } else {
+
+                //check
+                $cekdata = $this->layanan->find($layanan_id);
+                $fotolama = $cekdata['layanan_icon'];
+                if ($fotolama != 'default.png') {
+                    unlink('img/layanan/' . $fotolama);
+                }
+
+                //Get Datetime now
+                $date        = date("Y-m-d");
+                $time        = date("H-i-s");
+
+                $filegambar = $this->request->getFile('layanan_icon');
+                $nama_filegambar = $date . '_' . $time . '_' . $filegambar->getName();
+
+                $updatedata = [
+                    'layanan_icon' => $nama_filegambar
+                ];
+
+                $this->layanan->update($layanan_id, $updatedata);
+
+                $filegambar->move('img/layanan', $nama_filegambar);
+
+                // Data Log START
+                $date         = date("Y-m-d");
+                $time         = date("H:i:s");
+                $user_nama    = session()->get('nama');
+                $layanan_subkategori = $cekdata['layanan_subkategori'];
+    
+               $log = [
+                   'log_user'      => $user_nama,
+                   'log_dt'        => $date,
+                   'log_tm'        => $time,
+                   'log_status'    => 'BERHASIL',
+                   'log_aktivitas' => 'Edit icon layanan ' . $layanan_subkategori,
+               ];
+               $this->log->insert($log);
+               // Data Log END
+
+                $msg = [
+                    'sukses' => 'Gambar Berhasil Diupload!'
+                ];
+            }
             echo json_encode($msg);
         }
     }

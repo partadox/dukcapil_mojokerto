@@ -13,11 +13,11 @@
             <div class="modal-body">
 
                 <div class="form-group">
-                    <label>Kategori gisa </label>
+                    <label>Kategori & Sub-Kategori </label>
                     <select name="gisa_kategori" id="gisa_kategori" class="form-control">
                         <option value="" disabled selected>--PILIH--</option>
                         <?php foreach ($list_kategori as $key => $data) { ?>
-                            <option value="<?= $data['GK_id'] ?>"><?= $data['GK_nama'] ?></option>
+                            <option value="<?= $data['GKS_id'] ?>"><?= $data['GK_nama'] ?> - <?= $data['GKS_nama'] ?></option>
                         <?php } ?>
                     </select>
                     <div class="invalid-feedback error_gisa_kategori">
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Subkategori gisa </label>
+                    <label>Su-sub-kategori Gisa </label>
                     <input type="text" class="form-control" id="gisa_subkategori" name="gisa_subkategori">
                     <div class="invalid-feedback error_gisa_subkategori">
                     </div>

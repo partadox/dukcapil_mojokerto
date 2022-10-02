@@ -8,7 +8,7 @@ class Model_Layanan extends Model
 {
     protected $table      = 'tb_layanan';
     protected $primaryKey = 'layanan_id';
-    protected $allowedFields = ['layanan_kategori', 'layanan_subkategori', 'layanan_slug','layanan_deskripsi'];
+    protected $allowedFields = ['layanan_kategori', 'layanan_subkategori', 'layanan_icon','layanan_slug','layanan_deskripsi'];
 
     public function list()
     {

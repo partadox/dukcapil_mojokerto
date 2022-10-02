@@ -17,18 +17,6 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-// use App\Models\Modelfoto;
-// use App\Models\Modelgallery;
-// use App\Models\Modelstaf;
-// use App\Models\Modelmapel;
-// use App\Models\Modelguru;
-// use App\Models\Modelkategori;
-// use App\Models\Modelsiswa;
-// use App\Models\Modelkelas;
-// use App\Models\Modelkelulusan;
-// use App\Models\Modelkonfigurasi;
-
-// use App\Models\Modelspp;
 use App\Models\Modeluser;
 
 use App\Models\Model_Galeri;
@@ -48,6 +36,7 @@ use App\Models\Model_Zi;
 use App\Models\Model_Visitor;
 use App\Models\Model_Gisa;
 use App\Models\Model_Gisa_Kategori;
+use App\Models\Model_Gisa_SubKategori;
 
 class BaseController extends Controller
 {
@@ -74,19 +63,7 @@ class BaseController extends Controller
 		//--------------------------------------------------------------------
 		// E.g.:
 		$this->session = \Config\Services::session();
-		// $this->staf = new Modelstaf;
-		// $this->mapel = new Modelmapel;
-		// $this->guru = new Modelguru;
-		// $this->siswa = new Modelsiswa($request);
-		// $this->kelas = new Modelkelas;
-		// $this->spp = new Modelspp($request);
-		// $this->kategori = new Modelkategori;
 		
-		// $this->gallery = new Modelgallery;
-		// $this->foto = new Modelfoto;
-		
-		// $this->kelulusan = new Modelkelulusan($request);
-		// $this->konfigurasi = new Modelkonfigurasi;
 		$this->user = new Modeluser;
 
 		$this->galeri			= new Model_Galeri;
@@ -106,5 +83,6 @@ class BaseController extends Controller
 		$this->visitor 			= new Model_Visitor;
 		$this->gisa 			= new Model_Gisa;
 		$this->gisa_kategori 	= new Model_Gisa_Kategori;
+		$this->gisa_subkategori = new Model_Gisa_SubKategori;
 	}
 }

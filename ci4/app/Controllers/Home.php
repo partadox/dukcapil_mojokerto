@@ -717,6 +717,7 @@ class Home extends BaseController
 			$data = [
 				'layanan_kategori' 		=> $this->layanan_kategori->list(),
 				'LK_nama'				=> $LK->LK_nama,
+				'LK_id' 				=> $LK_id,
 				'layanan'				=> $layanan,
 				'nomor_telepon'         => $nomor_telepon['informasi_value'],
 				'email'                 => $email['informasi_value'],
@@ -1092,12 +1093,10 @@ class Home extends BaseController
     {
 		$this->visitor();
 		$gisa_kategori_id			= $this->gisa_kategori->gisa_kategori_id($GK_slug);
-		$GK_id 						= $gisa_kategori_id->GK_id;
-
-		$cek 						= $this->gisa->cek_gisa($GK_id);
-		$list 						= $this->gisa->list_GK_id($GK_id);
-
+		$cek 						= $this->gisa_kategori->cek_gisa_kategori($GK_slug);
 		if ($cek != NULL) {
+			$GK_id 					= $gisa_kategori_id->GK_id;
+			$list 					= $this->gisa_subkategori->list_GK_id($GK_id);
 			$GK						= $this->gisa_kategori->find($GK_id);
 			$nomor_telepon          = $this->informasi->find(1);
 			$email                  = $this->informasi->find(2);
@@ -1137,51 +1136,150 @@ class Home extends BaseController
 		} else {
 			return redirect()->to('/home');
 		}
+    }
+
+	public function gisa_sub_sub_kategori()
+    {
+		$this->visitor();
+		$uri                	= service('uri');
+        $GK_slug   				= $uri->getSegment(3);
+		$GKS_slug   			= $uri->getSegment(4);
+		
+        if ($GK_slug == NULL || $GKS_slug == NULL) {
+            return redirect()->to('/home');
+        } elseif ($GK_slug != NULL && $GKS_slug != NULL) {
+			$cek_slug_kategori          = $this->gisa_kategori->cek_gisa_kategori($GK_slug);
+			$cek_slug_subkategori 		= $this->gisa_subkategori->cek_gisa_subkategori($GKS_slug);
+
+			if ($cek_slug_kategori != 0 && $cek_slug_subkategori != 0) {
+				$gisa_kategori_id			= $this->gisa_kategori->gisa_kategori_id($GK_slug);
+				$GK_id 						= $gisa_kategori_id->GK_id;
+
+				$gisa_subkategori_id		= $this->gisa_subkategori->gisa_kategori_id($GKS_slug);
+				$GKS_id 					= $gisa_subkategori_id->GKS_id;
+
+				$list 						= $this->gisa->list_GK_GKS($GK_id, $GKS_id);
+
+					$GK						= $this->gisa_kategori->find($GK_id);
+					$GKS					= $this->gisa_subkategori->find($GKS_id);
+					$nomor_telepon          = $this->informasi->find(1);
+					$email                  = $this->informasi->find(2);
+					$alamat                 = $this->informasi->find(3);
+					$facebook               = $this->informasi->find(4);
+					$twitter                = $this->informasi->find(5);
+					$instagram              = $this->informasi->find(6);
+					$youtube                = $this->informasi->find(7);
+					$jam_senin_kamis        = $this->informasi->find(8);
+					$jam_jumat              = $this->informasi->find(9);
+					$jam_sabtu_minggu       = $this->informasi->find(10);
+					$wa_akta                = $this->informasi->find(11);
+					$wa_ktp                 = $this->informasi->find(12);
+					$wa_pengaduan           = $this->informasi->find(13);
+
+					$data = [
+						'layanan_kategori' 		=> $this->layanan_kategori->list(),
+						'GK_slug'				=> $GK['GK_slug'],
+						'GK_nama'				=> $GK['GK_nama'],
+						'GKS_slug'				=> $GKS['GKS_slug'],
+						'GKS_nama'				=> $GKS['GKS_nama'],
+						'gisa'					=> $list,
+						'nomor_telepon'         => $nomor_telepon['informasi_value'],
+						'email'                 => $email['informasi_value'],
+						'alamat'                => $alamat['informasi_value'],
+						'facebook'              => $facebook['informasi_value'],
+						'twitter'               => $twitter['informasi_value'],
+						'instagram'             => $instagram['informasi_value'],
+						'youtube'               => $youtube['informasi_value'],
+						'jam_senin_kamis'       => $jam_senin_kamis['informasi_value'],
+						'jam_jumat'             => $jam_jumat['informasi_value'],
+						'jam_sabtu_minggu'      => $jam_sabtu_minggu['informasi_value'],
+						'wa_akta'               => $wa_akta['informasi_value'],
+						'wa_ktp'                => $wa_ktp['informasi_value'],
+						'wa_pengaduan'          => $wa_pengaduan['informasi_value'],
+					];
+
+					return view('gisa_sub_subkategori', $data);
+			} else {
+				return redirect()->to('/home');
+			}
+        }
 		
     }
 
-	public function gisa($gisa_slug)
+	
+
+	public function gisa()
     {
 		$this->visitor();
-		$gisa_data					= $this->gisa->gisa_data($gisa_slug);
-		$gisa_kategori 				= $gisa_data->gisa_kategori;
+		$uri                		= service('uri');
+        $GK_slug   					= $uri->getSegment(3);
+		$GKS_slug   				= $uri->getSegment(4);
+		$gisa_slug   				= $uri->getSegment(5);
 
-			$GK						= $this->gisa_kategori->find($gisa_kategori);
-			$nomor_telepon          = $this->informasi->find(1);
-			$email                  = $this->informasi->find(2);
-			$alamat                 = $this->informasi->find(3);
-			$facebook               = $this->informasi->find(4);
-			$twitter                = $this->informasi->find(5);
-			$instagram              = $this->informasi->find(6);
-			$youtube                = $this->informasi->find(7);
-			$jam_senin_kamis        = $this->informasi->find(8);
-			$jam_jumat              = $this->informasi->find(9);
-			$jam_sabtu_minggu       = $this->informasi->find(10);
-			$wa_akta                = $this->informasi->find(11);
-			$wa_ktp                 = $this->informasi->find(12);
-			$wa_pengaduan           = $this->informasi->find(13);
 
-			$data = [
-				'layanan_kategori' 		=> $this->layanan_kategori->list(),
-				'GK_slug'				=> $GK['GK_slug'],
-				'GK_nama'				=> $GK['GK_nama'],
-				'gisa'					=> $gisa_data,
-				'nomor_telepon'         => $nomor_telepon['informasi_value'],
-				'email'                 => $email['informasi_value'],
-				'alamat'                => $alamat['informasi_value'],
-				'facebook'              => $facebook['informasi_value'],
-				'twitter'               => $twitter['informasi_value'],
-				'instagram'             => $instagram['informasi_value'],
-				'youtube'               => $youtube['informasi_value'],
-				'jam_senin_kamis'       => $jam_senin_kamis['informasi_value'],
-				'jam_jumat'             => $jam_jumat['informasi_value'],
-				'jam_sabtu_minggu'      => $jam_sabtu_minggu['informasi_value'],
-				'wa_akta'               => $wa_akta['informasi_value'],
-				'wa_ktp'                => $wa_ktp['informasi_value'],
-				'wa_pengaduan'          => $wa_pengaduan['informasi_value'],
-			];
+		if ($GK_slug == NULL || $GKS_slug == NULL || $gisa_slug == NULL) {
+			return redirect()->to('/home');
+		} elseif ($GK_slug != NULL && $GKS_slug != NULL && $gisa_slug != NULL) {
 
-			return view('halaman/single_gisa', $data);
-		
+			$cek_slug_kategori          = $this->gisa_kategori->cek_gisa_kategori($GK_slug);
+			$cek_slug_subkategori 		= $this->gisa_subkategori->cek_gisa_subkategori($GKS_slug);
+			$cek_slug_gisa 				= $this->gisa->cek2_gisa($gisa_slug);
+
+			if ($cek_slug_kategori != 0 && $cek_slug_subkategori != 0 && $cek_slug_gisa != 0) {
+				$gisa_kategori_id			= $this->gisa_kategori->gisa_kategori_id($GK_slug);
+				$GK_id 						= $gisa_kategori_id->GK_id;
+
+				$gisa_subkategori_id		= $this->gisa_subkategori->gisa_kategori_id($GKS_slug);
+				$GKS_id 					= $gisa_subkategori_id->GKS_id;
+				$gisa_data					= $this->gisa->gisa_data($GK_id, $GKS_id, $gisa_slug);
+				$gisa_kategori 				= $gisa_data->gisa_kategori;
+
+				$GK						= $this->gisa_kategori->find($GK_id);
+				$GKS					= $this->gisa_subkategori->find($GKS_id);
+				$nomor_telepon          = $this->informasi->find(1);
+				$email                  = $this->informasi->find(2);
+				$alamat                 = $this->informasi->find(3);
+				$facebook               = $this->informasi->find(4);
+				$twitter                = $this->informasi->find(5);
+				$instagram              = $this->informasi->find(6);
+				$youtube                = $this->informasi->find(7);
+				$jam_senin_kamis        = $this->informasi->find(8);
+				$jam_jumat              = $this->informasi->find(9);
+				$jam_sabtu_minggu       = $this->informasi->find(10);
+				$wa_akta                = $this->informasi->find(11);
+				$wa_ktp                 = $this->informasi->find(12);
+				$wa_pengaduan           = $this->informasi->find(13);
+
+				$data = [
+					'layanan_kategori' 		=> $this->layanan_kategori->list(),
+					'GK_slug'				=> $GK['GK_slug'],
+					'GK_nama'				=> $GK['GK_nama'],
+					'GKS_slug'				=> $GKS['GKS_slug'],
+					'GKS_nama'				=> $GKS['GKS_nama'],
+					'gisa'					=> $gisa_data,
+					'nomor_telepon'         => $nomor_telepon['informasi_value'],
+					'email'                 => $email['informasi_value'],
+					'alamat'                => $alamat['informasi_value'],
+					'facebook'              => $facebook['informasi_value'],
+					'twitter'               => $twitter['informasi_value'],
+					'instagram'             => $instagram['informasi_value'],
+					'youtube'               => $youtube['informasi_value'],
+					'jam_senin_kamis'       => $jam_senin_kamis['informasi_value'],
+					'jam_jumat'             => $jam_jumat['informasi_value'],
+					'jam_sabtu_minggu'      => $jam_sabtu_minggu['informasi_value'],
+					'wa_akta'               => $wa_akta['informasi_value'],
+					'wa_ktp'                => $wa_ktp['informasi_value'],
+					'wa_pengaduan'          => $wa_pengaduan['informasi_value'],
+				];
+
+				return view('halaman/single_gisa', $data);
+			} else {
+				return redirect()->to('/home');
+			}
+			
+			
+				
+		}
+	
     }
 }

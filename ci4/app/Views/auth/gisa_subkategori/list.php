@@ -1,12 +1,12 @@
+
+
 <hr>
-<table id="listgisa" class="table table-striped dt-responsive " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+<table id="listGKS" class="table table-striped dt-responsive " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
     <thead>
         <tr>
             <th width="5%">#</th>
             <th width="15%">Kategori Gisa</th>
-            <th width="15%">Subkategori</th>
-            <th width="15%">Sub-sub-kategori</th>
-            <th width="15%">File Upload</th>
+            <th width="15%">Sub-Kategori Gisa</th>
             <th width="10%">Tindakan</th>
         </tr>
     </thead>
@@ -19,24 +19,12 @@
             <tr>
                 <td><?= $nomor ?></td>
                 <td><h6><b><?= esc($data['GK_nama']) ?></b></h6> </td>
-                <td><h6><b><?= esc($data['GKS_nama']) ?></b></h6> </td>
-                <td><h6><b><?= esc($data['gisa_subkategori']) ?></b> </h6> </td>
-                <td> 
-                        <?php if($data['gisa_file'] == NULL) { ?>
-                            <p>-</p>
-                        <?php } ?>
-                        <?php if($data['gisa_file'] != NULL) { ?>
-                            <?= esc($data['gisa_file']) ?>
-                        <?php } ?>
-                </td>
+                <td><h6><?= esc($data['GKS_nama']) ?></h6> </td>
                 <td>
-                    <h6>
-                        <button type="button" onclick="file(<?= $data['gisa_id'] ?>)" class="btn btn-primary "><i class="fa fa-file"></i> FILE</button>
-                    </h6>
-                    <button type="button" class="btn btn-primary mb-2" onclick="edit('<?= $data['gisa_id'] ?>')">
+                    <button type="button" class="btn btn-primary mb-2" onclick="edit('<?= $data['GKS_id'] ?>')">
                         <i class="fa fa-edit"></i>
                     </button>
-                    <button type="button" class="btn btn-danger mb-2" onclick="hapus('<?= $data['gisa_id'] ?>')">
+                    <button type="button" class="btn btn-danger mb-2" onclick="hapus('<?= $data['GKS_id'] ?>')">
                         <i class="fa fa-trash"></i>
                     </button>
                 </td>
@@ -46,17 +34,26 @@
     </tbody>
 </table>
 
+
 <script>
+
     $(document).ready(function() {
-        $('#listgisa').DataTable();
+        $('#listGKS').DataTable();
+
+        // $('textarea#GK_isi').summernote({
+        //     height: 250,
+        //     minHeight: null,
+        //     maxHeight: null,
+        //     focus: true
+        // });
     });
 
-    function edit(gisa_id) {
+    function edit(GKS_id) {
         $.ajax({
             type: "post",
-            url: "<?= site_url('gisa/formedit') ?>",
+            url: "<?= site_url('gisa/subkategori_formedit') ?>",
             data: {
-                gisa_id: gisa_id
+                GKS_id: GKS_id
             },
             dataType: "json",
             success: function(response) {
@@ -68,24 +65,7 @@
         });
     }
 
-    function file(gisa_id) {
-        $.ajax({
-            type: "post",
-            url: "<?= site_url('gisa/formupload') ?>",
-            data: {
-                gisa_id: gisa_id
-            },
-            dataType: "json",
-            success: function(response) {
-                if (response.sukses) {
-                    $('.viewmodalup').html(response.sukses).show();
-                    $('#modaluploadpdf').modal('show');
-                }
-            }
-        });
-    }
-
-    function hapus(gisa_id) {
+    function hapus(GKS_id) {
         Swal.fire({
             title: 'Hapus data?',
             text: `Apakah anda yakin menghapus data?`,
@@ -98,11 +78,11 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: "<?= site_url('gisa/hapus') ?>",
+                    url: "<?= site_url('gisa/subkategori_hapus') ?>",
                     type: "post",
                     dataType: "json",
                     data: {
-                        gisa_id: gisa_id
+                        GKS_id: GKS_id
                     },
                     success: function(response) {
                         if (response.sukses) {
@@ -113,7 +93,7 @@
                                 showConfirmButton: false,
                                 timer: 1500
                             });
-                            listgisa();
+                            listGK();
                         }
                     }
                 });

@@ -40,7 +40,7 @@ class Gisa extends BaseController
         if ($this->request->isAJAX()) {
             $data = [
                 'title'         => 'Tambah Gisa',
-                'list_kategori' => $this->gisa_kategori->list(),
+                'list_kategori' => $this->gisa_subkategori->list(),
             ];
             $msg = [
                 'data' => view('auth/gisa/tambah', $data)
@@ -122,10 +122,10 @@ class Gisa extends BaseController
             $list        =  $this->gisa->find($gisa_id);
             $data = [
                 'title'                 => 'Edit gisa',
-                'list_kategori'         => $this->gisa_kategori->list(),
-                'gisa_id'            => $gisa_id ,
-                'gisa_kategori'      => $list['gisa_kategori'],
-                'gisa_subkategori'   => $list['gisa_subkategori'],
+                'list_kategori'         => $this->gisa_subkategori->list(),
+                'gisa_id'               => $gisa_id ,
+                'gisa_kategori'         => $list['gisa_kategori'],
+                'gisa_subkategori'      => $list['gisa_subkategori'],
             ];
             $msg = [
                 'sukses' => view('auth/gisa/edit', $data)
@@ -343,6 +343,18 @@ class Gisa extends BaseController
         }
     }
 
+    public function subkategori()
+    {
+        if (!session()->get('user_id')) {
+            return redirect()->to('home/not_found');
+        } else {
+            $data = [
+                'title' => 'Halaman Atur Sub-Kategori Gisa'
+            ];
+            return view('auth/gisa_subkategori/index', $data);
+        }
+    }
+
     public function kategori_getdata()
     {
         if ($this->request->isAJAX()) {
@@ -359,6 +371,22 @@ class Gisa extends BaseController
         }
     }
 
+    public function subkategori_getdata()
+    {
+        if ($this->request->isAJAX()) {
+            $data = [
+                'title' => 'Atur Sub-Kategori Gisa',
+                'list' => $this->gisa_subkategori->list()
+
+
+            ];
+            $msg = [
+                'data' => view('auth/gisa_subkategori/list', $data)
+            ];
+            echo json_encode($msg);
+        }
+    }
+
     public function kategori_formtambah()
     {
         if ($this->request->isAJAX()) {
@@ -367,6 +395,20 @@ class Gisa extends BaseController
             ];
             $msg = [
                 'data' => view('auth/gisa_kategori/tambah', $data)
+            ];
+            echo json_encode($msg);
+        }
+    }
+
+    public function subkategori_formtambah()
+    {
+        if ($this->request->isAJAX()) {
+            $data = [
+                'title'         => 'Tambah Sub-Kategori Gisa',
+                'list_kategori' => $this->gisa_kategori->list(),
+            ];
+            $msg = [
+                'data' => view('auth/gisa_subkategori/tambah', $data)
             ];
             echo json_encode($msg);
         }
@@ -427,6 +469,71 @@ class Gisa extends BaseController
         }
     }
 
+    public function subkategori_simpan()
+    {
+        if ($this->request->isAJAX()) {
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'GKS_kategori_id' => [
+                    'label' => 'Kategori Gisa',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} tidak boleh kosong',
+                    ]
+                ],
+
+                'GKS_nama' => [
+                    'label' => 'Nama Kategori gisa',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} tidak boleh kosong',
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'GKS_kategori_id'  => $validation->getError('GKS_kategori_id'),
+                        'GKS_nama'         => $validation->getError('GKS_nama'),
+                    ]
+                ];
+            } else {
+
+                //Get Datetime now
+                $date        = date("Y-m-d");
+                $time        = date("H:i:s");
+                //Get nama User
+                $user_nama      = session()->get('nama');
+                $GKS_kategori_id        = $this->request->getVar('GKS_kategori_id');
+                $GKS_nama               = $this->request->getVar('GKS_nama');
+
+                $simpandata = [
+                    'GKS_kategori_id'   => $GKS_kategori_id,
+                    'GKS_nama'          => $GKS_nama,
+                    'GKS_slug'          => $this->request->getVar('GKS_slug'),
+                ];
+
+                $this->gisa_subkategori->insert($simpandata);
+
+                // Data Log START
+                $log = [
+                    'log_user'      => $user_nama,
+                    'log_dt'        => $date,
+                    'log_tm'        => $time,
+                    'log_status'    => 'BERHASIL',
+                    'log_aktivitas' => 'Buat Sub-Kategori Gisa Baru - ' . $GKS_nama,
+                ];
+                $this->log->insert($log);
+                // Data Log END
+
+                $msg = [
+                    'sukses' => 'Data Berhasil Disimpan'
+                ];
+            }
+            echo json_encode($msg);
+        }
+    }
+
     public function kategori_formedit()
     {
         if ($this->request->isAJAX()) {
@@ -439,6 +546,25 @@ class Gisa extends BaseController
             ];
             $msg = [
                 'sukses' => view('auth/gisa_kategori/edit', $data)
+            ];
+            echo json_encode($msg);
+        }
+    }
+
+    public function subkategori_formedit()
+    {
+        if ($this->request->isAJAX()) {
+            $GKS_id  = $this->request->getVar('GKS_id');
+            $list       =  $this->gisa_subkategori->find($GKS_id);
+            $data = [
+                'title'          => 'Edit Sub-Kategori Gisa',
+                'list_kategori'  => $this->gisa_kategori->list(),
+                'GKS_id'         => $list['GKS_id'],
+                'GKS_kategori_id'=> $list['GKS_kategori_id'],
+                'GKS_nama'       => $list['GKS_nama'],
+            ];
+            $msg = [
+                'sukses' => view('auth/gisa_subkategori/edit', $data)
             ];
             echo json_encode($msg);
         }
@@ -499,6 +625,72 @@ class Gisa extends BaseController
         }
     }
 
+    public function subkategori_update()
+    {
+        if ($this->request->isAJAX()) {
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'GKS_kategori_id' => [
+                    'label' => 'Kategori Gisa',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} tidak boleh kosong',
+                    ]
+                ],
+
+                'GKS_nama' => [
+                    'label' => 'Nama Kategori gisa',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{field} tidak boleh kosong',
+                    ]
+                ],
+            ]);
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'GKS_kategori_id'  => $validation->getError('GKS_kategori_id'),
+                        'GKS_nama'         => $validation->getError('GKS_nama'),
+                    ]
+                ];
+            } else {
+
+                //Get Datetime now
+                $date        = date("Y-m-d");
+                $time        = date("H:i:s");
+                //Get nama User
+                $user_nama              = session()->get('nama');
+                $GKS_kategori_id        = $this->request->getVar('GKS_kategori_id');
+                $GKS_nama               = $this->request->getVar('GKS_nama');
+
+                $updatedata = [
+                    'GKS_kategori_id'   => $GKS_kategori_id,
+                    'GKS_nama'          => $GKS_nama,
+                    'GKS_slug'          => $this->request->getVar('GKS_slug'),
+                ];
+
+                $GKS_id         = $this->request->getVar('GKS_id');
+                $this->gisa_subkategori->update($GKS_id, $updatedata);
+
+                // Data Log START
+                $log = [
+                    'log_user'      => $user_nama,
+                    'log_dt'        => $date,
+                    'log_tm'        => $time,
+                    'log_status'    => 'BERHASIL',
+                    'log_aktivitas' => 'Edit Data Sub-Kategori gisa - ' . $GKS_nama,
+                ];
+                $this->log->insert($log);
+                // Data Log END
+
+                $msg = [
+                    'sukses' => 'Data Berhasil Diupdate'
+                ];
+            }
+            echo json_encode($msg);
+        }
+    }
+
     public function kategori_hapus()
     {
         if ($this->request->isAJAX()) {
@@ -527,6 +719,40 @@ class Gisa extends BaseController
 
             $msg = [
                 'sukses' => 'Data gisa Berhasil Dihapus'
+            ];
+
+            echo json_encode($msg);
+        }
+    }
+
+    public function subkategori_hapus()
+    {
+        if ($this->request->isAJAX()) {
+
+            $GKS_id = $this->request->getVar('GKS_id');
+            //check
+            $cekdata = $this->gisa_subkategori->find($GKS_id);
+
+            // Data Log START
+            $date         = date("Y-m-d");
+            $time         = date("H:i:s");
+            $user_nama    = session()->get('nama');
+            $GKS_nama = $cekdata['GKS_nama'];
+
+           $log = [
+               'log_user'      => $user_nama,
+               'log_dt'        => $date,
+               'log_tm'        => $time,
+               'log_status'    => 'BERHASIL',
+               'log_aktivitas' => 'Hapus Sub-Kategori Gisa ' . $GKS_nama,
+           ];
+           $this->log->insert($log);
+           // Data Log END
+
+            $this->gisa_subkategori->delete($GKS_id);
+
+            $msg = [
+                'sukses' => 'Data Sub-Kategori Gisa Berhasil Dihapus'
             ];
 
             echo json_encode($msg);

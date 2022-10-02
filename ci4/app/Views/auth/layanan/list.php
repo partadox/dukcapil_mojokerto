@@ -14,6 +14,7 @@
             <th width="5%">#</th>
             <th width="15%">Kategori Layanan</th>
             <th width="15%">Subkategori</th>
+            <th width="15%">Icon</th>
             <th width="10%">Tindakan</th>
         </tr>
     </thead>
@@ -30,6 +31,9 @@
                 <td><?= $nomor ?></td>
                 <td><h6><b><?= esc($data['LK_nama']) ?></b></h6> </td>
                 <td><h6><b><?= esc($data['layanan_subkategori']) ?></b> </h6> </td>
+                <td class="text-center">
+                    <img onclick="gambar('<?= $data['layanan_id'] ?>')" src="<?= base_url('img/layanan/' . $data['layanan_icon']) ?>" width="120px" class="img-thumbnail">
+                </td>
                 <td>
                     <button type="button" class="btn btn-primary mb-2" onclick="edit('<?= $data['layanan_id'] ?>')">
                         <i class="fa fa-edit"></i>
@@ -158,5 +162,22 @@
                 });
             }
         })
+    }
+
+    function gambar(layanan_id) {
+        $.ajax({
+            type: "post",
+            url: "<?= site_url('layanan/formupload') ?>",
+            data: {
+                layanan_id: layanan_id
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modalupload').modal('show');
+                }
+            }
+        });
     }
 </script>

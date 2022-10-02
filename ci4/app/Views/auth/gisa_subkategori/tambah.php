@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,26 +8,26 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?= form_open('gisa/update', ['class' => 'formgisa']) ?>
+            <?= form_open('gisa/subkategori_simpan', ['class' => 'formtambah']) ?>
             <?= csrf_field(); ?>
             <div class="modal-body">
-                <input type="hidden" class="form-control" id="gisa_id" value="<?= $gisa_id ?>" name="gisa_id" readonly>
-                
+
                 <div class="form-group">
-                    <label>Kategori & Sub-Kategori Gisa </label>
-                    <select name="gisa_kategori" id="gisa_kategori" class="form-control">
+                    <label>Kategori Gisa </label>
+                    <select name="GKS_kategori_id" id="GKS_kategori_id" class="form-control">
+                        <option value="" disabled selected>--PILIH--</option>
                         <?php foreach ($list_kategori as $key => $data) { ?>
-                            <option value="<?= $data['GKS_id'] ?>" <?php if ($data['GKS_id'] == $gisa_kategori) echo "selected"; ?>><?= $data['GK_nama'] ?> - <?= $data['GKS_nama'] ?></option>
+                            <option value="<?= $data['GK_id'] ?>"><?= $data['GK_nama'] ?></option>
                         <?php } ?>
                     </select>
-                    <div class="invalid-feedback error_gisa_kategori">
+                    <div class="invalid-feedback error_GKS_kategori_id">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Subkategori gisa </label>
-                    <input type="text" class="form-control" id="gisa_subkategori" name="gisa_subkategori" value="<?= $gisa_subkategori ?>">
-                    <div class="invalid-feedback error_gisa_subkategori">
+                    <label>Nama Sub-Kategori Gisa</label>
+                    <input type="text" class="form-control" id="GKS_nama" name="GKS_nama">
+                    <div class="invalid-feedback error_GKS_nama">
                     </div>
                 </div>
 
@@ -46,23 +46,16 @@
         $('.js-example-basic-single').select2({
             theme: "bootstrap4"
         });
-        $('textarea#gisa_deskripsi').summernote({
-            height: 250,
-            minHeight: null,
-            maxHeight: null,
-            focus: true
-        });
-        $('.formgisa').submit(function(e) {
-            let title = $('input#gisa_subkategori').val()
+        $('.formtambah').submit(function(e) {
+            let title = $('input#GKS_nama').val()
             e.preventDefault();
             $.ajax({
                 type: "post",
                 url: $(this).attr('action'),
                 data: {
-                    gisa_id: $('input#gisa_id').val(),
-                    gisa_subkategori: $('input#gisa_subkategori').val(),
-                    gisa_slug: title.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, ''),
-                    gisa_kategori: $('select#gisa_kategori').val(),
+                    GKS_kategori_id: $('select#GKS_kategori_id').val(),
+                    GKS_nama: $('input#GKS_nama').val(),
+                    GKS_slug: title.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, ''),
                 },
                 dataType: "json",
                 beforeSend: function() {
@@ -75,20 +68,20 @@
                 },
                 success: function(response) {
                     if (response.error) {
-                        if (response.error.gisa_kategori) {
-                            $('#gisa_kategori').addClass('is-invalid');
-                            $('.error_gisa_kategori').html(response.error.gisa_kategori);
+                        if (response.error.GKS_kategori_id) {
+                            $('#GKS_kategori_id').addClass('is-invalid');
+                            $('.error_GKS_kategori_id').html(response.error.GKS_kategori_id);
                         } else {
-                            $('#gisa_kategori').removeClass('is-invalid');
-                            $('.error_gisa_kategori').html('');
+                            $('#GKS_kategori_id').removeClass('is-invalid');
+                            $('.error_GKS_kategori_id').html('');
                         }
 
-                        if (response.error.gisa_subkategori) {
-                            $('#gisa_subkategori').addClass('is-invalid');
-                            $('.error_gisa_subkategori').html(response.error.gisa_subkategori);
+                        if (response.error.GKS_nama) {
+                            $('#GKS_nama').addClass('is-invalid');
+                            $('.error_GKS_nama').html(response.error.GKS_nama);
                         } else {
-                            $('#gisa_subkategori').removeClass('is-invalid');
-                            $('.error_gisa_subkategori').html('');
+                            $('#GKS_nama').removeClass('is-invalid');
+                            $('.error_GKS_nama').html('');
                         }
 
                     } else {
@@ -99,8 +92,8 @@
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        $('#modaledit').modal('hide');
-                        listgisa();
+                        $('#modaltambah').modal('hide');
+                        listGK();
                     }
                 }
             });

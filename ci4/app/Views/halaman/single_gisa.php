@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
           <div class="page-header-content">
-            <h4><a style="color:white;" href="<?= base_url('home/gisa_kategori/') ?>"> Kategori Lapak Gisa Unduhan </a> <i style="color:white;" class="ti-arrow-right"></i> <a style="color:white;" href="<?= base_url('home/gisa_subkategori/' . $GK_slug) ?>"> <?= $GK_nama ?></a> <i style="color:white;" class="ti-arrow-right"></i> <a style="color:white;"> <?= $gisa->gisa_subkategori ?></a></h4>
+            <h4><a style="color:white;" href="<?= base_url('home/gisa_kategori/') ?>">Lapak Gisa Kategori: <?= $GK_nama ?> </a> <i style="color:white;" class="ti-arrow-right"></i> <a style="color:white;" href="<?= base_url('home/gisa_subkategori/' . $GK_slug) ?>"> Sub-Kategori: <?= $GKS_nama ?> </a> <i style="color:white;" class="ti-arrow-right"></i> <a style="color:white;"> Sub-Sub-Kategori: <?= $gisa->gisa_subkategori ?></a></h4>
           </div>
       </div>
     </div>
