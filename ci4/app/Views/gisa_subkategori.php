@@ -32,7 +32,7 @@
                     $nomor++; ?>
                     <tr>
                         <td><?= $nomor ?></td>
-                        <td> <a href="<?= base_url('home/gisa_sub_subkategori/' . $GK_nama . '/' . $data['GKS_slug']) ?>"><?= esc($data['GKS_nama']) ?></a> </td>
+                        <td> <a href="<?= base_url('home/gisa_sub_subkategori/' . $GK_slug . '/' . $data['GKS_slug']) ?>"><?= esc($data['GKS_nama']) ?></a> </td>
                     </tr>
 
                 <?php endforeach; ?>
