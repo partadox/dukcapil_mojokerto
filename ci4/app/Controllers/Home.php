@@ -1142,8 +1142,8 @@ class Home extends BaseController
     {
 		$this->visitor();
 		$uri                	= service('uri');
-        $GK_slug   				= $uri->getSegment(4);
-		$GKS_slug   			= $uri->getSegment(5);
+        $GK_slug   				= $uri->getSegment(3);
+		$GKS_slug   			= $uri->getSegment(4);
 		
         if ($GK_slug == NULL || $GKS_slug == NULL) {
             return redirect()->to('/home');
