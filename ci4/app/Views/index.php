@@ -152,7 +152,7 @@
                     <?php
                     foreach ($layanan as $data_layanan) :?>
                         <div class="col-lg-3 col-md-6">
-                            <div class="course-category">
+                            <div class="course-categorya">
                                 <div class="category-icon">
                                 <img style="object-fit:fill;
                                 width:150px;
