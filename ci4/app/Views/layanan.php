@@ -34,7 +34,7 @@
         </div>
     </section>
   </div>
-  <div class="col-sm-4 mt-4" style="padding-left:150px; padding-right:120px;" >
+  <div class="col-sm-4 mt-4" style="padding-left:130px; padding-right:50px;" >
      <div class="course-sidebar">
         <div class="course-widget course-details-info">
           <h4 class="course-title">Pengaduan</h4>
