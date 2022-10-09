@@ -8,8 +8,8 @@
         <div class="row align-items-center">
             <div class="col-md-12 col-lg-4 mt-2">
                 <div class="banner-content">
-                    <span class="subheading">DISPENDUKCAPIL KOTA MOJOKERTO</span>
-                    <h1>Kami Ada <br> Untuk Anda</h1>
+                    <span class="subheading"><h2>DISPENDUKCAPIL KOTA MOJOKERTO</h2></span> 
+                    <h2 class="m-4">"Kami Ada Untuk Anda"</h2>
                     <a href="#">
                         <img style="object-fit:fill;
                         width:250px;
@@ -20,7 +20,8 @@
                         width:150px;
                         height:150px;" src="<?= base_url('/img/walikota/' . $foto_wakil) ?>" alt="" class="img-fluid">
                     </a> <br> -->
-                    <a style="color:white; font-size:35px; margin-left: 28px;" ><?= $nama_walkot_wakil ?></a> <br> <br>
+                    <a style="color:white; font-size:35px; margin-left: 28px;" ><?= $nama_walkot_wakil ?></a> <br> 
+                    <a style="color:white; font-size:30px; margin-left: 10px;" >Walikota Mojokerto</a> <br>
                 </div>
             </div>
 
