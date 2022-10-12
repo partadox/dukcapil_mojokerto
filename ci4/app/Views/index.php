@@ -20,7 +20,7 @@
                         width:150px;
                         height:150px;" src="<?= base_url('/img/walikota/' . $foto_wakil) ?>" alt="" class="img-fluid">
                     </a> <br> -->
-                    <a style="color:white; font-size:35px; margin-left: 28px;" ><?= $nama_walkot_wakil ?></a> <br> 
+                    <a style="color:white; font-size:35px; margin-left: -27px;" ><?= $nama_walkot_wakil ?></a> <br> 
                     <a style="color:white; font-size:30px; margin-left: 10px;" >Walikota Mojokerto</a> <br>
                 </div>
             </div>
