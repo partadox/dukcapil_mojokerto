@@ -1,7 +1,7 @@
 
 <?php $pager->setSurroundCount(4) ?>
 
-<nav aria-label="Page navigation" class="blog-pagination text-center">
+<nav aria-label="Page navigation" class="blog-pagination text-center mt-2">
     <ul class="pagination">
     <?php if ($pager->hasPrevious()) : ?>
         <li>
