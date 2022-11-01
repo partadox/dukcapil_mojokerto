@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
           <div class="page-header-content">
-            <h1><?= $title ?></h1>
+            <h1 style="font-size:4vw;"><?= $title ?></h1>
           </div>
       </div>
     </div>

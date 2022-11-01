@@ -11,7 +11,7 @@
                     <span class="subheading"><h2>DISPENDUKCAPIL KOTA MOJOKERTO</h2></span> 
                     <h2 class="m-4">"Kami Ada Untuk Anda"</h2>
                     <a href="#">
-                        <img style="object-fit:fill;
+                        <img style="object-fit:scale-down;
                         width:250px;
                         height:250px;" src="<?= base_url('/img/walikota/' . $foto_walkot) ?>" alt="" class="img-fluid">
                     </a> <br> <br>
@@ -20,8 +20,8 @@
                         width:150px;
                         height:150px;" src="<?= base_url('/img/walikota/' . $foto_wakil) ?>" alt="" class="img-fluid">
                     </a> <br> -->
-                    <a style="color:white; font-size:35px; margin-left: -27px;" ><?= $nama_walkot_wakil ?></a> <br> 
-                    <a style="color:white; font-size:30px; margin-left: 10px;" >Walikota Mojokerto</a> <br>
+                    <a style="color:white; font-size:30px; margin-left: 10px;" ><?= $nama_walkot_wakil ?></a> <br> 
+                    <a style="color:white; font-size:28px; margin-left: 25px;" >Walikota Mojokerto</a> <br>
                 </div>
             </div>
 
@@ -33,10 +33,10 @@
                     <div class="review-item">
                         <div class="client-info">
                             <a href="<?= base_url('home/berita/' . $pin1['berita_slug']) ?>">
-                                <img style="object-fit:fill;
+                                <img style="object-fit:scale-down;
                                 width:350px;
                                 height:350px;
-                                border: solid 1px #CCC" src="<?= base_url('img/berita/' . $pin1['berita_sampul']) ?>" alt="" class="img-fluid">
+                                border: solid 1px #e5a88b" src="<?= base_url('img/berita/' . $pin1['berita_sampul']) ?>" alt="" class="img-fluid">
                             </a>
                         </div>
                         <div class="client-desc">
@@ -54,10 +54,10 @@
                     <div class="review-item">
                         <div class="client-info">
                             <a href="<?= base_url('home/pengumuman/' . $pin2['pengumuman_slug']) ?>">
-                                <img style="object-fit:fill;
+                                <img style="object-fit:scale-down;
                                 width:350px;
                                 height:350px;
-                                border: solid 1px #CCC" src="<?= base_url()?>/img/pengumuman/default.png" alt="" class="img-fluid">
+                                border: solid 1px #e5a88b" src="<?= base_url()?>/img/pengumuman/default.png" alt="" class="img-fluid">
                             </a>
                         </div>
                         <div class="client-desc">
@@ -75,10 +75,10 @@
                     <div class="review-item">
                         <div class="client-info">
                             <a href="<?= base_url('home/penghargaan/' . $pin3['penghargaan_slug']) ?>">
-                                <img style="object-fit:fill;
+                                <img style="object-fit:scale-down;
                                 width:350px;
                                 height:350px;
-                                border: solid 1px #CCC" src="<?= base_url('img/penghargaan/' . $pin3['penghargaan_gambar']) ?>" alt="" class="img-fluid">
+                                border: solid 1px #e5a88b" src="<?= base_url('img/penghargaan/' . $pin3['penghargaan_gambar']) ?>" alt="" class="img-fluid">
                             </a>
                         </div>
                         <div class="client-desc">
@@ -194,10 +194,10 @@
                     <div class="course-block style-5">
                         <div class="course-img">
                             <a href="<?= base_url('home/berita/' . $data_berita['berita_slug']) ?>">
-                                <img style="object-fit:fill;
+                                <img style="object-fit:scale-down;
                                 width:600px;
                                 height:380px;
-                                border: solid 1px #CCC" src="<?= base_url('img/berita/' . $data_berita['berita_sampul']) ?>" alt="" class="img-fluid">
+                                border: solid 1px #fff" src="<?= base_url('img/berita/' . $data_berita['berita_sampul']) ?>" alt="" class="img-fluid">
                             </a>
                         </div>
                         
@@ -276,10 +276,10 @@
                     <div class="course-block style-5">
                         <div class="course-img">
                             <a href="<?= base_url('home/galeri/' . $data_galeri['galeri_slug']) ?>">
-                                <img style="object-fit:fill;
+                                <img style="object-fit:scale-down;
                                 width:600px;
                                 height:385px;
-                                border: solid 1px #CCC" src="<?= base_url('img/sampul/' . $data_galeri['galeri_sampul']) ?>" alt="" class="img-fluid">
+                                border: solid 1px #fff" src="<?= base_url('img/sampul/' . $data_galeri['galeri_sampul']) ?>" alt="" class="img-fluid">
                             </a>
                         </div>
                         

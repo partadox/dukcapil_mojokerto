@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
           <div class="page-header-content">
-            <h1>Daftar Kategori Unduhan Lapak Gisa</h1>
+            <h1 style="font-size:3.5vw;">Daftar Kategori Unduhan Lapak Gisa</h1>
           </div>
       </div>
     </div>

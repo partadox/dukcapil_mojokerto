@@ -2,6 +2,7 @@
 
 <?= $this->section('isi') ?>
 
+
 <div class="page-wrapper">
     <div class="container">
         <div class="post-single">
@@ -11,12 +12,12 @@
                         <img src="<?= base_url()?>/img/profil/<?= $sambutan_foto ?>" alt="" class="img-fluid">
                     </div>
                     <div class="author-info">
-                        <h4><?= $sambutan_nama ?></h4>
-                        <p><?= $sambutan_jabatan ?></p>
+                        <h4> <?= $sambutan_nama ?></h4>
+                        <p> <b><?= $sambutan_jabatan ?></b></p>
                     </div>
                 </div>
                 <blockquote>
-                    <?= $sambutan_isi ?>
+                    <p> <?= $sambutan_isi ?> </p>
                 </blockquote>
             </div>
         </div>
