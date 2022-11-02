@@ -33,6 +33,7 @@
 
                 <div class="form-group">
                     <label>Deskripsi Terkait Layanan</label>
+                    <p>Ketika upload gambar harap definisikan sizenya dengan cara klik gambar yang diupload kemudian pilih ukuruan 100%</p>
                     <textarea type="text" class="form-control" id="layanan_deskripsi" name="layanan_deskripsi"></textarea>
                     <div class="invalid-feedback error_layanan_deskripsi">
                     </div>

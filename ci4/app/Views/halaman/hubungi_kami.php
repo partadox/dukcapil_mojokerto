@@ -7,7 +7,7 @@
         <div class="course-single-header">
             <div class="single-course-details ">
 
-                <div style="background-color: #d9d9d9;" class="course-widget course-info">
+                <!-- <div style="background-color: #d9d9d9;" class="course-widget course-info">
                     <h4 class="course-title"> Kontak Dinas Kependudukan dan Pencatatan Sipil Kota Mojokerto</h4>
                     <div class="row">
                         <div class="col col-lg-4">
@@ -89,13 +89,52 @@
                         </div>
                     </div>
 
-                </div>
+                </div> -->
 
                 <div style="background-color: #d9d9d9;" class="course-widget course-info">
+                    <h4 class="course-title"> Kontak Dinas Kependudukan dan Pencatatan Sipil Kota Mojokerto</h4>
+                    <div class="row text-center">
+                        <p><i class="bi bi-location-pointer"></i> Alamat Kantor : <?= $alamat ?></p>
+                    </div>
+                    <div class="row text-center">
+                        <p><i class="bi bi-phone"></i> No. Telepon : <?= $nomor_telepon ?> </p>
+                    </div>
+
+                    <div class="row text-center">
+                        <p><i class="fa fa-globe"></i> Website : dispenduk.mojokertokota.go.id</p>
+                    </div>
+
+                    <div class="row text-center">
+                        <p><i class="bi bi-envelop"></i> Email : <?= $email ?></p>
+                    </div>
+
+                    <div class="row text-center">
+                        <p><i class="fab fa-whatsapp"></i> WA Pelayanan KK, Pindah dan Akta : <?= $wa_akta ?></p>
+                    </div>
+
+                    <div class="row text-center">
+                        <p><i class="fab fa-whatsapp"></i> WA Pelayanan KTP dan KIA : <?= $wa_ktp ?></p>
+                    </div>
+
+                    <div class="row text-center">
+                        <p><i class="fab fa-whatsapp"></i> WA Pelayanan Konsolidasi dan Pengaduan : <?= $wa_pengaduan ?></p>
+                    </div>
+
+                    <div class="row text-center">
+                        <p><i class="bi bi-speaker-on"></i> Pengaduan : https://curhatningita.lapor.go.id/</p>
+                    </div>
+
+                    <div class="row text-center">
+                        <p><i class="bi bi-phone"></i> Pengaduan Kontak : <?= $wa_pengaduan ?></p>
+                    </div>
+
+                </div>
+
+                <!-- <div style="background-color: #d9d9d9;" class="course-widget course-info">
                     <h4 class="course-title"> Sosial media</h4>
 
                     <div class="row">
-                        <div class="col col-lg-4">
+                        <div class="col col-lg-2">
                             <i class="fab fa-instagram"></i> Instagram
                         </div>
                         <div class="col col-lg-8">
@@ -104,7 +143,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col col-lg-4">
+                        <div class="col col-lg-2">
                             <i class="fab fa-facebook"></i> Facebook
                         </div>
                         <div class="col col-lg-8">
@@ -113,7 +152,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col col-lg-4">
+                        <div class="col col-lg-2">
                             <i class="fab fa-youtube"></i> Youtube
                         </div>
                         <div class="col col-lg-8">
@@ -122,7 +161,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col col-lg-4">
+                        <div class="col col-lg-2">
                             <i class="fab fa-twitter"></i> Twitter
                         </div>
                         <div class="col col-lg-8">
@@ -130,9 +169,30 @@
                         </div>
                     </div>
 
-                </div>
+                </div> -->
 
                 <div style="background-color: #d9d9d9;" class="course-widget course-info">
+                    <h4 class="course-title"> Sosial media</h4>
+
+                    <div class="row text-center">
+                        <a href="<?= $instagram ?>" target="_blank"><i class="fab fa-instagram"></i> Instagram : @dispenduk_kotamoker</a> 
+                    </div>
+
+                    <div class="row text-center">
+                        <a href="<?= $facebook ?>" target="_blank"><i class="fab fa-facebook"></i> Facebook : Dispenduk Kota Mojokerto</a>
+                    </div>
+
+                    <div class="row">
+                        <a href="<?= $youtube ?>" target="_blank"><i class="fab fa-youtube"></i> Youtube : Dukcapil Kota Mojokerto</a>
+                    </div>
+
+                    <div class="row">
+                        <a href="<?= $twitter ?>" target="_blank"><i class="fab fa-twitter"></i> Twitter : @dukcapil_kotaMR</a>
+                    </div>
+
+                </div>
+
+                <!-- <div style="background-color: #d9d9d9;" class="course-widget course-info">
                     <h4 class="course-title"> Jam Pelayanan</h4>
                         <p>Jam Pelayanan Tatap Muka Dinas Kependudukan dan Catatan Sipil Kota Mojokerto</p>
                     <div class="row">
@@ -160,6 +220,23 @@
                         <div class="col col-lg-8">
                             : <?= $jam_sabtu_minggu ?>
                         </div>
+                    </div>
+
+                </div> -->
+
+                <div style="background-color: #d9d9d9;" class="course-widget course-info">
+                    <h4 class="course-title"> Jam Pelayanan</h4>
+                        <p>Jam Pelayanan Tatap Muka Dinas Kependudukan dan Catatan Sipil Kota Mojokerto</p>
+                    <div class="row text-center">
+                        <a><i class="fa fa-calendar"></i> Senin - Kamis : <?= $jam_senin_kamis ?></a>
+                    </div>
+
+                    <div class="row">
+                        <a><i class="fa fa-calendar"></i> Jum'at : <?= $jam_jumat ?></a>
+                    </div>
+
+                    <div class="row">
+                        <a><i class="fa fa-calendar"></i> Sabtu - Minggu : <?= $jam_sabtu_minggu ?></a>
                     </div>
 
                 </div>

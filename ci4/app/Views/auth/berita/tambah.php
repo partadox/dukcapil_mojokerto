@@ -20,6 +20,7 @@
 
                 <div class="form-group">
                     <label>Isi</label>
+                    <p>Ketika upload gambar harap definisikan sizenya dengan cara klik gambar yang diupload kemudian pilih ukuruan 100%</p>
                     <textarea type="text" class="form-control" id="berita_isi" name="berita_isi"></textarea>
                     <div class="invalid-feedback error_berita_isi">
                     </div>

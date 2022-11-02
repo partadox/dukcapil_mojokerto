@@ -27,7 +27,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="course-block">
                         <div class="course-img">
-                            <img src="<?= base_url('img/berita/' . $data_berita['berita_sampul']) ?>" alt="Dispendukcapil Kota Mojokerto" class="img-fluid">
+                            <img style="object-fit:scale-down ;" src="<?= base_url('img/berita/' . $data_berita['berita_sampul']) ?>" alt="Dispendukcapil Kota Mojokerto" class="img-fluid">
                         </div>
                         
                         <div class="course-content"> 

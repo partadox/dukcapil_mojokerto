@@ -86,7 +86,9 @@
 <?= form_close() ?>
 <script>
     $(document).ready(function() {
-        $('#listberita').DataTable();
+        $('#listberita').DataTable({
+            stateSave: true
+        });
 
         $('#centangSemua').click(function(e) {
             if ($(this).is(':checked')) {

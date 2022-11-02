@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
           <div class="page-header-content">
-            <h1><?= $LK_nama ?></h1>
+            <h1 style="font-size:3.5vw;"><?= $LK_nama ?></h1>
           </div>
       </div>
     </div>
