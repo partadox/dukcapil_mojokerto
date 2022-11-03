@@ -11,7 +11,7 @@ class Validasilogin implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (!session('login')) {
-            return redirect()->to('portal');
+            return redirect()->to('/');
         }
     }
 
