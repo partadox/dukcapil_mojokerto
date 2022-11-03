@@ -130,7 +130,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbar3">
                                 <?php
                                 foreach ($layanan_kategori as $data_LK) :?>
-                                    <a class="dropdown-item " href="<?= base_url('home/layanan_kategori/'. $data_LK['LK_slug']) ?>">
+                                    <a class="dropdown-item text-wrap" href="<?= base_url('home/layanan_kategori/'. $data_LK['LK_slug']) ?>">
                                         <?= esc($data_LK['LK_nama']) ?>
                                     </a>
                                 <?php endforeach; ?>
