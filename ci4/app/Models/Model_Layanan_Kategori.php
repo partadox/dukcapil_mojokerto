@@ -13,7 +13,7 @@ class Model_Layanan_Kategori extends Model
     public function list()
     {
         return $this->table('tb_layanan_kategori')
-            ->orderBy('LK_id', 'DESC')
+            ->orderBy('LK_id', 'ASC')
             ->get()->getResultArray();
     }
 
