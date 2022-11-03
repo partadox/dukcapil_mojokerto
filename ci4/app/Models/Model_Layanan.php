@@ -14,7 +14,7 @@ class Model_Layanan extends Model
     {
         return $this->table('tb_layanan')
             ->join('tb_layanan_kategori', 'tb_layanan_kategori.LK_id = tb_layanan.layanan_kategori')
-            ->orderBy('layanan_id', 'DESC')
+            ->orderBy('layanan_id', 'ASC')
             ->get()->getResultArray();
     }
 
