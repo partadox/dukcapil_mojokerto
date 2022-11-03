@@ -80,7 +80,7 @@ class Login extends BaseController
 
                             $msg = [
                                 'sukses' => [
-                                    'link' => '/auth/dashboard'
+                                    'link' => 'auth/dashboard'
                                 ]
                             ];
                         } else {
