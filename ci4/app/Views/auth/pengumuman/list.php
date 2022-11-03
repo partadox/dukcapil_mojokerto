@@ -82,7 +82,9 @@
 <?= form_close() ?>
 <script>
     $(document).ready(function() {
-        $('#listpengumuman').DataTable();
+        $('#listpengumuman').DataTable({
+            stateSave: true
+        });
 
         $('#centangSemua').click(function(e) {
             if ($(this).is(':checked')) {
