@@ -76,11 +76,12 @@ class Login extends BaseController
                 curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
                 curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
                 $response = curl_exec($verify);
-                $response = str_replace(array("'", ': "', ',', '{'), array('"', '": "', ',"', '{"'), $response);
 
                 $status = json_decode($response, true);
 
-                if ($status['success'] ==1) {
+                // var_dump($status["success"]);
+
+                if ($status["success"] = true) {
                     $cek_status = 1;
                 } else {
                     $cek_status = 0;
@@ -90,7 +91,7 @@ class Login extends BaseController
                     $row = $query_cekuser->getRow();
                     $password_user = $row->password;
 
-                    if (password_verify($password, $password_user) && $cek_status == 1) {
+                    if (password_verify($password, $password_user) && $cek_status ==1 ) {
                         if ($row->active == 1) {
                             $simpan_session = [
                                 'login' => true,
