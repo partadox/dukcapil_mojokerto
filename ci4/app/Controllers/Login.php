@@ -133,7 +133,7 @@ class Login extends BaseController
                     ];
                 }
             }
-            //echo json_encode($msg);
+            echo json_encode($msg);
         }
     }
 
