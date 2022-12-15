@@ -79,12 +79,13 @@ class Login extends BaseController
 
                 $status = json_decode($response, true);
 
-                if ($status['success']) {
+                if ($status['success'] ==1) {
                     $cek_status = 1;
                 } else {
                     $cek_status = 0;
                 }
                 
+                // var_dump($cek_status);
                 
                 if (count($result) > 0) {
                     $row = $query_cekuser->getRow();
