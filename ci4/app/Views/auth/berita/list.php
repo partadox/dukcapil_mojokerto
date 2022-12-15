@@ -126,7 +126,9 @@
                             data: $(this).serialize(),
                             dataType: "json",
                             success: function(response) {
-                                Swal.fire({
+                                
+                                if (response.sukses) {
+                                    Swal.fire({
                                     icon: 'success',
                                     title: 'Berhasil',
                                     text: 'Data Berhasil Dihapus!',
@@ -134,6 +136,19 @@
                                     timer: 1500
                                 });
                                 listberita();
+                                }
+
+                                if (response.eror) {
+                                    Swal.fire({
+                                        title: "Error",
+                                        text: response.eror.code,
+                                        icon: "error",
+                                        showConfirmButton: false,
+                                        timer: 1250
+                                    }).then(function() {
+                                        window.location = response.eror.link;
+                                    });
+                                }
                             }
                         });
                     }

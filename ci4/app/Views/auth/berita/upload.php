@@ -67,7 +67,9 @@
                             $('.error_berita_sampul').html(response.error.berita_sampul);
                         }
                     } else {
-                        Swal.fire({
+                        
+                        if (response.sukses) {
+                            Swal.fire({
                             title: "Berhasil!",
                             text: response.sukses,
                             icon: "success",
@@ -76,6 +78,19 @@
                         });
                         $('#modalupload').modal('hide');
                         listberita();
+                        }
+
+                        if (response.eror) {
+                            Swal.fire({
+                                title: "Error",
+                                text: response.eror.code,
+                                icon: "error",
+                                showConfirmButton: false,
+                                timer: 1250
+                            }).then(function() {
+                                window.location = response.eror.link;
+                            });
+                        }
                     }
 
                 }

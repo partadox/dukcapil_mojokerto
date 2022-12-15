@@ -12,21 +12,22 @@
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <div class="form-group">
-                    <label>Username</label>
+                    <label>Username <code>*</code> </label>
                     <input type="text" class="form-control" id="username" name="username">
                     <div class="invalid-feedback errorUser">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Nama</label>
+                    <label>Nama <code>*</code> </label>
                     <input type="text" class="form-control" id="nama" name="nama">
                     <div class="invalid-feedback errorNama">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>Password</label>
+                    <label>Password <code>*</code></label> <br>
+                    <code>Password Kombinsasi dari huruf kecil, huruf kapital, angka, simbol dan minimal 8 karakter</code>
                     <input type="password" class="form-control" id="password" name="password">
                     <div class="invalid-feedback errorPass">
                     </div>
@@ -34,7 +35,7 @@
 
 
                 <div class="form-group">
-                    <label>Status Aktif</label>
+                    <label>Status Aktif <code>*</code></label>
                     <select name="active" id="active" class="form-control">
                         <option Disabled=true Selected=true>Pilih</option>
                         <option value="1">Aktif</option>
@@ -112,7 +113,9 @@
                         }
 
                     } else {
-                        Swal.fire({
+
+                        if (response.sukses) {
+                            Swal.fire({
                             title: "Berhasil!",
                             icon: "success",
                             showConfirmButton: false,
@@ -120,6 +123,20 @@
                         });
                         $('#modaltambah').modal('hide');
                         listuser();
+                        }
+
+                        if (response.eror) {
+                            Swal.fire({
+                                title: "Error",
+                                text: response.eror.code,
+                                icon: "error",
+                                showConfirmButton: false,
+                                timer: 1250
+                            }).then(function() {
+                                window.location = response.eror.link;
+                            });
+                        }
+                        
                     }
                 }
             });

@@ -29,6 +29,7 @@
     <!-- Responsive datatable examples -->
     <link href="<?= base_url() ?>/assets_panel/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
+
 </head>
 
 <body>

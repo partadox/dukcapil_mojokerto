@@ -33,6 +33,9 @@
                     <button type="button" class="btn btn-primary btn-sm" onclick="edit('<?= $data['user_id'] ?>')">
                         <i class="fa fa-edit"></i>
                     </button>
+                    <button type="button" class="btn btn-warning btn-sm" onclick="pass_change('<?= $data['user_id'] ?>')">
+                        <i class="fa fa-lock"></i>
+                    </button>
                     <button type="button" class="btn btn-danger btn-sm" onclick="hapus('<?= $data['user_id'] ?>')">
                         <i class="fa fa-trash"></i>
                     </button>
@@ -66,6 +69,23 @@
         });
     }
 
+    function pass_change(user_id) {
+        $.ajax({
+            type: "post",
+            url: "<?= site_url('user/formedit_pass') ?>",
+            data: {
+                user_id: user_id
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodalpass').html(response.sukses).show();
+                    $('#modaleditpass').modal('show');
+                }
+            }
+        });
+    }
+
     function hapus(user_id) {
         Swal.fire({
             title: 'Hapus user?',
@@ -94,6 +114,18 @@
                                 timer: 1500
                             });
                             listuser();
+                        }
+
+                        if (response.eror) {
+                            Swal.fire({
+                                title: "Error",
+                                text: response.eror.code,
+                                icon: "error",
+                                showConfirmButton: false,
+                                timer: 1250
+                            }).then(function() {
+                                window.location = response.eror.link;
+                            });
                         }
                     }
                 });

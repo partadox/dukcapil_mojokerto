@@ -17,6 +17,7 @@ class Login extends BaseController
             return redirect()->to('auth/dashboard');
         }
         $data = [
+            'site_key' => getenv('recaptchaKey'),
             'title' => 'Login'
         ];
         return view('auth/login', $data);
@@ -27,6 +28,7 @@ class Login extends BaseController
         if ($this->request->isAJAX()) {
             $username = $this->request->getVar('username');
             $password = $this->request->getVar('password');
+            $recaptchaResponse = trim($this->request->getVar('g-recaptcha-response'));
 
             $validation = \Config\Services::validation();
 
@@ -61,11 +63,27 @@ class Login extends BaseController
 
                 $result = $query_cekuser->getResult();
 
+                $secret = getenv('recaptchaSecret');
+                $credential = array(
+                    'secret' => $secret,
+                    'response' => $recaptchaResponse
+                );
+
+                $verify = curl_init();
+                curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+                curl_setopt($verify, CURLOPT_POST, true);
+                curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($credential));
+                curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+                $response = curl_exec($verify);
+
+                $status = json_decode($response, true);
+
                 if (count($result) > 0) {
                     $row = $query_cekuser->getRow();
                     $password_user = $row->password;
 
-                    if (password_verify($password, $password_user)) {
+                    if (password_verify($password, $password_user) && $status['success']) {
                         if ($row->active == 1) {
                             $simpan_session = [
                                 'login' => true,
@@ -85,22 +103,25 @@ class Login extends BaseController
                             ];
                         } else {
                             $msg = [
-                                'nonactive' => [
-                                    'nonactive' => 'User tidak aktif!'
+                                'eror' => [
+                                    'respon' => 'User tidak aktif!',
+                                    'link'   => '/portal'
                                 ]
                             ];
                         }
                     } else {
                         $msg = [
-                            'error' => [
-                                'password' => 'Password salah!'
+                            'eror' => [
+                                'respon' => 'Username atau Password Salah, Harap Centang Captcha.',
+                                'link'   => '/portal'
                             ]
                         ];
                     }
                 } else {
                     $msg = [
-                        'error' => [
-                            'username' => 'User tidak ditemukan!'
+                        'eror' => [
+                            'respon' => 'Username atau Password Salah, Harap Centang Captcha.',
+                            'link'   => '/portal'
                         ]
                     ];
                 }

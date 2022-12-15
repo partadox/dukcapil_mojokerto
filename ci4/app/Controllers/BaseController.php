@@ -48,7 +48,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = ['form', 'url', 'Tgl_indo'];
+	protected $helpers = ['form', 'url', 'Tgl_indo', 'reCaptcha'];
 
 	/**
 	 * Constructor.

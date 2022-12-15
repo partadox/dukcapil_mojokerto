@@ -21,6 +21,9 @@
 <div class="viewmodal">
 </div>
 
+<div class="viewmodalpass">
+</div>
+
 
 <script>
     function listuser() {

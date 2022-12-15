@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="modaledit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modaleditpass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,31 +8,15 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <?= form_open('user/update', ['class' => 'formedit']) ?>
+            <?= form_open('user/update_pass', ['class' => 'formedit']) ?>
             <?= csrf_field(); ?>
             <div class="modal-body">
                 <input type="hidden" class="form-control" id="user_id" value="<?= $user_id ?>" name="user_id" readonly>
                 <div class="form-group">
-                    <label>Username</label>
-                    <input type="text" class="form-control" id="username" name="username" value="<?= $username ?>">
-                    <div class="invalid-feedback errorUser">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Nama</label>
-                    <input type="text" class="form-control" id="nama" name="nama" value="<?= $nama ?>">
-                    <div class="invalid-feedback errorNama">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Status Aktif</label>
-                    <select name="active" id="active" class="form-control">
-                        <option value="1"  <?php if ($active == '1') echo "selected"; ?>>Aktif</option>
-                        <option value="0"  <?php if ($active == '0') echo "selected"; ?>>Nonaktif</option>
-                    </select>
-                    <div class="invalid-feedback erroractive">
+                    <label>Password <code>*</code></label> <br>
+                    <code>Password Kombinsasi dari huruf kecil, huruf kapital, angka, simbol dan minimal 8 karakter</code>
+                    <input type="password" class="form-control" id="password" name="password">
+                    <div class="invalid-feedback errorPass">
                     </div>
                 </div>
 
@@ -57,9 +41,7 @@
                 url: $(this).attr('action'),
                 data: {
                     user_id: $('input#user_id').val(),
-                    username: $('input#username').val(),
-                    nama: $('input#nama').val(),
-                    active: $('select#active').val(),
+                    password: $('input#password').val(),
                 },
                 dataType: "json",
                 beforeSend: function() {
@@ -72,31 +54,17 @@
                 },
                 success: function(response) {
                     if (response.error) {
-                        if (response.error.username) {
-                            $('#username').addClass('is-invalid');
-                            $('.errorUser').html(response.error.username);
+                        
+                        if (response.error.password) {
+                            $('#password').addClass('is-invalid');
+                            $('.errorPass').html(response.error.password);
                         } else {
-                            $('#username').removeClass('is-invalid');
-                            $('.errorUser').html('');
-                        }
-
-                        if (response.error.nama) {
-                            $('#nama').addClass('is-invalid');
-                            $('.errorNama').html(response.error.nama);
-                        } else {
-                            $('#nama').removeClass('is-invalid');
-                            $('.errorNama').html('');
-                        }
-
-                        if (response.error.active) {
-                            $('#active').addClass('is-invalid');
-                            $('.erroractive').html(response.error.active);
-                        } else {
-                            $('#active').removeClass('is-invalid');
-                            $('.erroractive').html('');
+                            $('#password').removeClass('is-invalid');
+                            $('.errorPass').html('');
                         }
 
                     } else {
+                        
                         if (response.sukses) {
                             Swal.fire({
                             title: "Berhasil!",
@@ -104,7 +72,7 @@
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        $('#modaledit').modal('hide');
+                        $('#modaleditpass').modal('hide');
                         listuser();
                         }
 
@@ -119,7 +87,6 @@
                                 window.location = response.eror.link;
                             });
                         }
-                        
                     }
                 }
             });

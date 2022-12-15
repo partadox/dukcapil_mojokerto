@@ -20,14 +20,25 @@
                             <input type="password" placeholder="Password" name="password" id="password"  class="fadeIn ">
                             <div class="invalid-feedback errorPassword">
                         </div>
+
+                        <div class="form-group mt-3" style="margin-left: 50px;">
+                            <div class="g-recaptcha" data-sitekey="<?= $site_key ?>"></div>
+                        </div>
+
                         <input type="submit" value="Masuk"></input>
+
+                        
                         <p id="formFooter"><a href="https://dispenduk.mojokertokota.go.id/">Kembali ke Website Dispendukcapil Kota Mojokerto</a></p>
                     <?= form_close() ?>
                 </div>
         </div>
     </div>
+    
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script>
+        $('form').attr('autocomplete', 'off');
+
         $(document).ready(function() {
             $('.formlogin').submit(function(e) {
                 e.preventDefault();
@@ -77,13 +88,15 @@
 
                         }
 
-                        if (response.nonactive) {
+                        if (response.eror) {
                             Swal.fire({
                                 title: "Oooopss!",
-                                text: "User belum aktif!",
+                                text: response.eror.respon,
                                 icon: "error",
                                 showConfirmButton: false,
                                 timer: 1250
+                            }).then(function() {
+                                window.location = response.eror.link;
                             });
                         }
                     }

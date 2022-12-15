@@ -87,4 +87,5 @@
         })
     })
 </script>
+
 <?= $this->endSection('script') ?>
