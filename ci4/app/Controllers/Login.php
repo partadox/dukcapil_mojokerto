@@ -78,12 +78,19 @@ class Login extends BaseController
                 $response = curl_exec($verify);
 
                 $status = json_decode($response, true);
+
+                if ($status['success']) {
+                    $cek_status = 1;
+                } else {
+                    $cek_status = 0;
+                }
+                
                 
                 if (count($result) > 0) {
                     $row = $query_cekuser->getRow();
                     $password_user = $row->password;
 
-                    if (password_verify($password, $password_user) && $status == true) {
+                    if (password_verify($password, $password_user) && $cek_status == 1) {
                         if ($row->active == 1) {
                             $simpan_session = [
                                 'login' => true,
@@ -126,8 +133,7 @@ class Login extends BaseController
                     ];
                 }
             }
-
-            echo json_encode($msg);
+            //echo json_encode($msg);
         }
     }
 
