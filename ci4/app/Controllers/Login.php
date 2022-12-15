@@ -76,6 +76,7 @@ class Login extends BaseController
                 curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
                 curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
                 $response = curl_exec($verify);
+                $response = str_replace(array("'", ': "', ',', '{'), array('"', '": "', ',"', '{"'), $response);
 
                 $status = json_decode($response, true);
 
@@ -84,8 +85,6 @@ class Login extends BaseController
                 } else {
                     $cek_status = 0;
                 }
-                
-                // var_dump($cek_status);
                 
                 if (count($result) > 0) {
                     $row = $query_cekuser->getRow();
