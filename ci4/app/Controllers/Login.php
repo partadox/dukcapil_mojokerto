@@ -105,7 +105,7 @@ class Login extends BaseController
                             $msg = [
                                 'eror' => [
                                     'respon' => 'User tidak aktif!',
-                                    'link'   => '/portal'
+                                    'link'   => 'portal'
                                 ]
                             ];
                         }
@@ -113,7 +113,7 @@ class Login extends BaseController
                         $msg = [
                             'eror' => [
                                 'respon' => 'Username atau Password Salah, Harap Centang Captcha.',
-                                'link'   => '/portal'
+                                'link'   => 'portal'
                             ]
                         ];
                     }
@@ -121,7 +121,7 @@ class Login extends BaseController
                     $msg = [
                         'eror' => [
                             'respon' => 'Username atau Password Salah, Harap Centang Captcha.',
-                            'link'   => '/portal'
+                            'link'   => 'portal'
                         ]
                     ];
                 }
