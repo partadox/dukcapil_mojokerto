@@ -78,56 +78,57 @@ class Login extends BaseController
                 $response = curl_exec($verify);
 
                 $status = json_decode($response, true);
+                var_dump($status['success']);
 
-                if (count($result) > 0) {
-                    $row = $query_cekuser->getRow();
-                    $password_user = $row->password;
+                // if (count($result) > 0) {
+                //     $row = $query_cekuser->getRow();
+                //     $password_user = $row->password;
 
-                    if (password_verify($password, $password_user) && $status['success']) {
-                        if ($row->active == 1) {
-                            $simpan_session = [
-                                'login' => true,
-                                'user_id' => $row->user_id,
-                                'username' => $username,
-                                'nama'  => $row->nama,
-                                'foto'  => $row->foto,
-                                'level' => $row->level,
-                            ];
+                //     if (password_verify($password, $password_user) && $status['success']) {
+                //         if ($row->active == 1) {
+                //             $simpan_session = [
+                //                 'login' => true,
+                //                 'user_id' => $row->user_id,
+                //                 'username' => $username,
+                //                 'nama'  => $row->nama,
+                //                 'foto'  => $row->foto,
+                //                 'level' => $row->level,
+                //             ];
 
-                            $this->session->set($simpan_session);
+                //             $this->session->set($simpan_session);
 
-                            $msg = [
-                                'sukses' => [
-                                    'link' => 'auth/dashboard'
-                                ]
-                            ];
-                        } else {
-                            $msg = [
-                                'eror' => [
-                                    'respon' => 'User tidak aktif!',
-                                    'link'   => 'portal'
-                                ]
-                            ];
-                        }
-                    } else {
-                        $msg = [
-                            'eror' => [
-                                'respon' => 'Username atau Password Salah, Harap Centang Captcha.',
-                                'link'   => 'portal'
-                            ]
-                        ];
-                    }
-                } else {
-                    $msg = [
-                        'eror' => [
-                            'respon' => 'Username atau Password Salah, Harap Centang Captcha.',
-                            'link'   => 'portal'
-                        ]
-                    ];
-                }
+                //             $msg = [
+                //                 'sukses' => [
+                //                     'link' => 'auth/dashboard'
+                //                 ]
+                //             ];
+                //         } else {
+                //             $msg = [
+                //                 'eror' => [
+                //                     'respon' => 'User tidak aktif!',
+                //                     'link'   => 'portal'
+                //                 ]
+                //             ];
+                //         }
+                //     } else {
+                //         $msg = [
+                //             'eror' => [
+                //                 'respon' => 'Username atau Password Salah, Harap Centang Captcha.',
+                //                 'link'   => 'portal'
+                //             ]
+                //         ];
+                //     }
+                // } else {
+                //     $msg = [
+                //         'eror' => [
+                //             'respon' => 'Username atau Password Salah, Harap Centang Captcha.',
+                //             'link'   => 'portal'
+                //         ]
+                //     ];
+                // }
             }
 
-            echo json_encode($msg);
+            // echo json_encode($msg);
         }
     }
 
