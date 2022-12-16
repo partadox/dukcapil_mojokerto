@@ -98,7 +98,6 @@ class Login extends BaseController
                                 'user_id' => $row->user_id,
                                 'username' => $username,
                                 'nama'  => $row->nama,
-                                'foto'  => $row->foto,
                                 'level' => $row->level,
                             ];
 
