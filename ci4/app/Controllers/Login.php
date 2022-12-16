@@ -79,19 +79,12 @@ class Login extends BaseController
 
                 $status = json_decode($response, true);
 
-                // var_dump($status["success"]);
-
-                if ($status["success"] = true) {
-                    $cek_status = 1;
-                } else {
-                    $cek_status = 0;
-                }
                 
                 if (count($result) > 0) {
                     $row = $query_cekuser->getRow();
                     $password_user = $row->password;
 
-                    if (password_verify($password, $password_user) && $cek_status ==1 ) {
+                    if (password_verify($password, $password_user) && $status["success"]  ) {
                         if ($row->active == 1) {
                             $simpan_session = [
                                 'login' => true,
