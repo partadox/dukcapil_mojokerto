@@ -58,10 +58,10 @@
                     <div class="header-right float-right">
                         <div class="header-socials">
                             <ul>
-                                <li><a href="<?= $facebook ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="<?= $twitter ?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="<?= $instagram ?>" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                <li><a href="<?= $youtube ?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                <li><a href="<?= htmlentities($facebook)  ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="<?= htmlentities($twitter)  ?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="<?= htmlentities($instagram)  ?>" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                <li><a href="<?= htmlentities($youtube)  ?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -203,10 +203,10 @@
 				<div class="widget footer-widget mb-5 mb-lg-0">
 					<h5 class="widget-title">Sosial Media</h5>
 					<ul class="list-inline footer-socials">
-						<li class="list-inline-item"><a href="<?= $facebook ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-						<li class="list-inline-item"> <a href="<?= $twitter ?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="<?= $instagram ?>" target="_blank"><i class="fab fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="<?= $youtube ?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
+						<li class="list-inline-item"><a href="<?= htmlentities($facebook) ?>" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+						<li class="list-inline-item"> <a href="<?= htmlentities($twitter)  ?>" target="_blank"><i class="fab fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="<?= htmlentities($instagram)  ?>" target="_blank"><i class="fab fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="<?= htmlentities($youtube)  ?>" target="_blank"><i class="fab fa-youtube"></i></a></li>
 					</ul>
 				</div>
                 <div class="footer-widget footer-contact mb-lg-0">

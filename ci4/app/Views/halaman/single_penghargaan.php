@@ -48,7 +48,7 @@
                     <img src="<?= base_url('img/penghargaan/' . $penghargaan->penghargaan_gambar) ?>" alt="" class="img-fluid w-100">
                 </div>
                 <div class="single-course-details ">
-                    <?= $penghargaan->penghargaan_deskripsi ?>
+                    <?= htmlentities($penghargaan->penghargaan_deskripsi) ?>
                 </div>
             </div>
         </div>

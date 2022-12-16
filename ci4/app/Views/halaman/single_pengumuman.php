@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="single-course-details ">
-                    <?= $pengumuman->pengumuman_isi ?>
+                    <?= htmlentities($pengumuman->pengumuman_isi) ?>
                 </div>
             </div>
         </div>

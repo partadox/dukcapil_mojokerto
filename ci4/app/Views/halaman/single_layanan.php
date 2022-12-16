@@ -23,7 +23,7 @@
                 <div style="background-color: #ffffff;" class="course-widget course-info">
                     <h4 class="course-title"><?= $layanan->layanan_subkategori ?></h4>
                     
-                    <p><?= $layanan->layanan_deskripsi ?></p>
+                    <p><?= htmlentities($layanan->layanan_deskripsi) ?></p>
 
                 </div>
 

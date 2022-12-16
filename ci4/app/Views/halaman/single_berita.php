@@ -55,7 +55,7 @@
                 <div class="course-img">
                     <img src="<?= base_url('img/berita/' .$berita->berita_sampul ) ?>" alt="Dispendukcapil Kota Mojokerto" class="img-fluid">
                 </div>
-                <h6><?= $berita->berita_isi ?></h6>
+                <h6><?= htmlentities($berita->berita_isi)  ?></h6>
                 
             </div>
         </div>

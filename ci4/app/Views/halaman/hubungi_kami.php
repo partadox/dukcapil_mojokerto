@@ -1,6 +1,6 @@
-<?= $this->extend('main') ?>
+<?=$this->extend('main')?>
 
-<?= $this->section('isi') ?>
+<?=$this->section('isi')?>
 
 <section class="page-wrapper edutim-course-single">
     <div class="container">
@@ -14,7 +14,7 @@
                             <i class="bi bi-location-pointer"></i> Alamat Kantor
                         </div>
                         <div class="col col-lg-8">
-                            : <?= $alamat ?>
+                            : <?=htmlentities($alamat) ?>
                         </div>
                     </div>
                     <div class="row">
@@ -22,7 +22,7 @@
                             <i class="bi bi-phone"></i> No. Telepon
                         </div>
                         <div class="col col-lg-8">
-                            : <?= $nomor_telepon ?> 
+                            : <?=htmlentities($nomor_telepon) ?> 
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@
                             <i class="bi bi-envelop"></i> Email
                         </div>
                         <div class="col col-lg-8">
-                            : <?= $email ?>
+                            : <?=htmlentities($email) ?>
                         </div>
                     </div>
 
@@ -49,7 +49,7 @@
                             <i class="fab fa-whatsapp"></i> WA Pelayanan KK, Pindah dan Akta
                         </div>
                         <div class="col col-lg-8">
-                            : <?= $wa_akta ?>
+                            : <?=htmlentities($wa_akta) ?>
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@
                             <i class="fab fa-whatsapp"></i> WA Pelayanan KTP dan KIA
                         </div>
                         <div class="col col-lg-8">
-                            : <?= $wa_ktp ?>
+                            : <?=htmlentities($wa_ktp) ?>
                         </div>
                     </div>
 
@@ -67,7 +67,7 @@
                             <i class="fab fa-whatsapp"></i> WA Pelayanan Konsolidasi dan Pengaduan
                         </div>
                         <div class="col col-lg-8">
-                            : <?= $wa_pengaduan ?>
+                            : <?=htmlentities($wa_pengaduan) ?>
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@
                             <i class="bi bi-phone"></i> Pengaduan Kontak
                         </div>
                         <div class="col col-lg-8">
-                            : <?= $wa_pengaduan ?>
+                            : <?=htmlentities($wa_pengaduan) ?>
                         </div>
                     </div>
 
@@ -94,10 +94,10 @@
                 <div style="background-color: #d9d9d9;" class="course-widget course-info">
                     <h4 class="course-title"> Kontak Dinas Kependudukan dan Pencatatan Sipil Kota Mojokerto</h4>
                     <div class="row text-center">
-                        <p><i class="bi bi-location-pointer"></i> Alamat Kantor : <?= $alamat ?></p>
+                        <p><i class="bi bi-location-pointer"></i> Alamat Kantor : <?=htmlentities($alamat) ?></p>
                     </div>
                     <div class="row text-center">
-                        <p><i class="bi bi-phone"></i> No. Telepon : <?= $nomor_telepon ?> </p>
+                        <p><i class="bi bi-phone"></i> No. Telepon : <?=htmlentities($nomor_telepon) ?> </p>
                     </div>
 
                     <div class="row text-center">
@@ -105,19 +105,19 @@
                     </div>
 
                     <div class="row text-center">
-                        <p><i class="bi bi-envelop"></i> Email : <?= $email ?></p>
+                        <p><i class="bi bi-envelop"></i> Email : <?=htmlentities($email) ?></p>
                     </div>
 
                     <div class="row text-center">
-                        <p><i class="fab fa-whatsapp"></i> WA Pelayanan KK, Pindah dan Akta : <?= $wa_akta ?></p>
+                        <p><i class="fab fa-whatsapp"></i> WA Pelayanan KK, Pindah dan Akta : <?=htmlentities($wa_akta) ?></p>
                     </div>
 
                     <div class="row text-center">
-                        <p><i class="fab fa-whatsapp"></i> WA Pelayanan KTP dan KIA : <?= $wa_ktp ?></p>
+                        <p><i class="fab fa-whatsapp"></i> WA Pelayanan KTP dan KIA : <?=htmlentities($wa_ktp) ?></p>
                     </div>
 
                     <div class="row text-center">
-                        <p><i class="fab fa-whatsapp"></i> WA Pelayanan Konsolidasi dan Pengaduan : <?= $wa_pengaduan ?></p>
+                        <p><i class="fab fa-whatsapp"></i> WA Pelayanan Konsolidasi dan Pengaduan : <?=htmlentities($wa_pengaduan) ?></p>
                     </div>
 
                     <div class="row text-center">
@@ -125,7 +125,7 @@
                     </div>
 
                     <div class="row text-center">
-                        <p><i class="bi bi-phone"></i> Pengaduan Kontak : <?= $wa_pengaduan ?></p>
+                        <p><i class="bi bi-phone"></i> Pengaduan Kontak : <?=htmlentities($wa_pengaduan) ?></p>
                     </div>
 
                 </div>
@@ -138,7 +138,7 @@
                             <i class="fab fa-instagram"></i> Instagram
                         </div>
                         <div class="col col-lg-8">
-                            : <a href="<?= $instagram ?>" target="_blank">@dispenduk_kotamoker</a>
+                            : <a href="<?=htmlentities($instagram) ?>" target="_blank">@dispenduk_kotamoker</a>
                         </div>
                     </div>
 
@@ -147,7 +147,7 @@
                             <i class="fab fa-facebook"></i> Facebook
                         </div>
                         <div class="col col-lg-8">
-                            : <a href="<?= $facebook ?>" target="_blank">Dispenduk Kota Mojokerto</a>
+                            : <a href="<?=htmlentities($facebook) ?>" target="_blank">Dispenduk Kota Mojokerto</a>
                         </div>
                     </div>
 
@@ -156,7 +156,7 @@
                             <i class="fab fa-youtube"></i> Youtube
                         </div>
                         <div class="col col-lg-8">
-                            : <a href="<?= $youtube ?>" target="_blank">Dukcapil Kota Mojokerto </a>
+                            : <a href="<?=htmlentities($youtube) ?>" target="_blank">Dukcapil Kota Mojokerto </a>
                         </div>
                     </div>
 
@@ -165,7 +165,7 @@
                             <i class="fab fa-twitter"></i> Twitter
                         </div>
                         <div class="col col-lg-8">
-                            : <a href="<?= $twitter ?>" target="_blank">@dukcapil_kotaMR</a>
+                            : <a href="<?=htmlentities($twitter) ?>" target="_blank">@dukcapil_kotaMR</a>
                         </div>
                     </div>
 
@@ -175,19 +175,19 @@
                     <h4 class="course-title"> Sosial media</h4>
 
                     <div class="row text-center">
-                        <a href="<?= $instagram ?>" target="_blank"><i class="fab fa-instagram"></i> Instagram : @dispenduk_kotamoker</a> 
+                        <a href="<?=htmlentities($instagram) ?>" target="_blank"><i class="fab fa-instagram"></i> Instagram : @dispenduk_kotamoker</a> 
                     </div>
 
                     <div class="row text-center">
-                        <a href="<?= $facebook ?>" target="_blank"><i class="fab fa-facebook"></i> Facebook : Dispenduk Kota Mojokerto</a>
+                        <a href="<?=htmlentities($facebook) ?>" target="_blank"><i class="fab fa-facebook"></i> Facebook : Dispenduk Kota Mojokerto</a>
                     </div>
 
                     <div class="row">
-                        <a href="<?= $youtube ?>" target="_blank"><i class="fab fa-youtube"></i> Youtube : Dukcapil Kota Mojokerto</a>
+                        <a href="<?=htmlentities($youtube) ?>" target="_blank"><i class="fab fa-youtube"></i> Youtube : Dukcapil Kota Mojokerto</a>
                     </div>
 
                     <div class="row">
-                        <a href="<?= $twitter ?>" target="_blank"><i class="fab fa-twitter"></i> Twitter : @dukcapil_kotaMR</a>
+                        <a href="<?=htmlentities($twitter) ?>" target="_blank"><i class="fab fa-twitter"></i> Twitter : @dukcapil_kotaMR</a>
                     </div>
 
                 </div>
@@ -200,7 +200,7 @@
                             <i class="fa fa-calendar"></i> Senin - Kamis
                         </div>
                         <div class="col col-lg-8">
-                            : <?= $jam_senin_kamis ?>
+                            : <?=htmlentities($jam_senin_kamis) ?>
                         </div>
                     </div>
 
@@ -209,7 +209,7 @@
                             <i class="fa fa-calendar"></i> Jum'at
                         </div>
                         <div class="col col-lg-8">
-                            : <?= $jam_jumat ?>
+                            : <?=htmlentities($jam_jumat) ?>
                         </div>
                     </div>
 
@@ -218,7 +218,7 @@
                             <i class="fa fa-calendar"></i> Sabtu - Minggu
                         </div>
                         <div class="col col-lg-8">
-                            : <?= $jam_sabtu_minggu ?>
+                            : <?=htmlentities($jam_sabtu_minggu) ?>
                         </div>
                     </div>
 
@@ -228,15 +228,15 @@
                     <h4 class="course-title"> Jam Pelayanan</h4>
                         <p>Jam Pelayanan Tatap Muka Dinas Kependudukan dan Catatan Sipil Kota Mojokerto</p>
                     <div class="row text-center">
-                        <a><i class="fa fa-calendar"></i> Senin - Kamis : <?= $jam_senin_kamis ?></a>
+                        <a><i class="fa fa-calendar"></i> Senin - Kamis : <?=htmlentities($jam_senin_kamis) ?></a>
                     </div>
 
                     <div class="row">
-                        <a><i class="fa fa-calendar"></i> Jum'at : <?= $jam_jumat ?></a>
+                        <a><i class="fa fa-calendar"></i> Jum'at : <?=htmlentities($jam_jumat) ?></a>
                     </div>
 
                     <div class="row">
-                        <a><i class="fa fa-calendar"></i> Sabtu - Minggu : <?= $jam_sabtu_minggu ?></a>
+                        <a><i class="fa fa-calendar"></i> Sabtu - Minggu : <?=htmlentities($jam_sabtu_minggu) ?></a>
                     </div>
 
                 </div>
@@ -246,4 +246,4 @@
     </div>
 </section>
 
-<?= $this->endSection('isi') ?>
+<?=$this->endSection('isi') ?>

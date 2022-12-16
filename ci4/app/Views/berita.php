@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
           <div class="page-header-content">
-            <h1 style="font-size:4vw;"><?= $title ?></h1>
+            <h1 style="font-size:4vw;"> <?= htmlentities($title) ?></h1>
           </div>
       </div>
     </div>
@@ -27,7 +27,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="course-block">
                         <div class="course-img">
-                            <img style="object-fit:scale-down ;" src="<?= base_url('img/berita/' . $data_berita['berita_sampul']) ?>" alt="Dispendukcapil Kota Mojokerto" class="img-fluid">
+                            <img style="object-fit:scale-down ;" src=" <?= base_url('img/berita/' . $data_berita['berita_sampul']) ?>" alt="Dispendukcapil Kota Mojokerto" class="img-fluid">
                         </div>
                         
                         <div class="course-content"> 
